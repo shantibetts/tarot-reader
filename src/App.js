@@ -5,13 +5,21 @@ import Home from './Components/Home'
 import Decks from './Components/Decks'
 import ThreeCardBasic from './Components/ThreeCardBasic'
 import NavBar from './Components/NavBar'
+import About from './Components/About'
 
 function App() {
+	const [allCards, setAllCards] = useState([])
+
 	useEffect(() => {
 		fetch('https://rws-cards-api.herokuapp.com/api/v1/cards/')
 			.then((response) => response.json())
-			.then((data) => {
-				console.log(data)
+			.then(({ cards }) => {
+				cards.forEach((card) => {
+					card.url = `https://www.sacred-texts.com/tarot/pkt/img/${card.name_short}.jpg`
+					card.reversed = false
+				})
+				console.log(cards)
+				setAllCards(cards)
 			})
 			.catch(() => console.log('Problem with Tarot Cards API fetch'))
 	}, [])
@@ -20,8 +28,12 @@ function App() {
 			<NavBar />
 			<Routes>
 				<Route path="/" element={<Home />} />
-				<Route path="/decks" element={<Decks />} />
-				<Route path="/threeCardBasic" element={<ThreeCardBasic />} />
+				<Route path="/decks" element={<Decks allCards={allCards} />} />
+				<Route
+					path="/threeCardBasic"
+					element={<ThreeCardBasic allCards={allCards} />}
+				/>
+				<Route path="/about" element={<About />} />
 			</Routes>
 		</div>
 	)

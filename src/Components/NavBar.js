@@ -57,11 +57,13 @@ const NavBar = () => {
 								Three Card Basic Reading
 							</MenuItem>
 						</Link>
+						<Link to={'/about'}>
+							<MenuItem onClick={handleClose}>About</MenuItem>
+						</Link>
 					</Menu>
 					<Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
 						Tarot Reader
 					</Typography>
-					<Button color="inherit">About</Button>
 				</Toolbar>
 			</AppBar>
 		</Box>

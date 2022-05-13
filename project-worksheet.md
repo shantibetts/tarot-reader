@@ -72,7 +72,6 @@ I want to create an interactive app that will do simple, and then not so simple 
 1. Home - displays welcome message, available decks, available layouts
 1. Decks - displays only decks, with longer descriptions, copyright, links to buy
 1. ThreeCardReading - displays empty slots for cards, onClick (mobile) onHover + onClick (desktop) shows descriptions. Deal button for mobile, show back of cards for desktop, onClick adds card to next slot.
-1. Card - a component to house card data
 1. Nav Menu - use @MUI menu
 1. About - display a short blurb about app with links to Repo and Portfolio website
 
