@@ -6,8 +6,8 @@
 
 | Day       | Deliverable                             | Status      |
 | --------- | --------------------------------------- | ----------- |
-| Friday    | Project Planning                        | in progress |
-| Sat/Sun   | Project setup and skeleton              | incomplete  |
+| Friday    | Project Planning                        | complete    |
+| Sat/Sun   | Project setup and skeleton              | in progress |
 | Monday    | Working components                      | incomplete  |
 | Tuesday   | Styling & complete MVP                  | incomplete  |
 | Wednesday | Celtic cross reading template           | incomplete  |
@@ -72,7 +72,7 @@ I want to create an interactive app that will do simple, and then not so simple 
 1. Home - displays welcome message, available decks, available layouts
 1. Decks - displays only decks, with longer descriptions, copyright, links to buy
 1. ThreeCardReading - displays empty slots for cards, onClick (mobile) onHover + onClick (desktop) shows descriptions. Deal button for mobile, show back of cards for desktop, onClick adds card to next slot.
-1. SevenCardReading - same as ThreeCardReading, but with 7 slots
+1. Card - a component to house card data
 1. Nav Menu - use @MUI menu
 1. About - display a short blurb about app with links to Repo and Portfolio website
 
@@ -85,19 +85,22 @@ I want to create an interactive app that will do simple, and then not so simple 
 | Nav Menu                                |    4     |      2hr       |     hr      |
 | Previews of decks + readings for Home   |    4     |      2hr       |     hr      |
 | Dynamic Styling                         |    3     |      6hr       |     hr      |
-| Total                                   |          |     15hrs      |     hrs     |
+| Total                                   |          |     15hrs      |     hr      |
 
 #### PostMVP
 
 | Component                    | Priority | Estimated Time | Actual Time |
 | ---------------------------- | :------: | :------------: | :---------: |
-| Themes / Darkmode            |    1     |      6hr       |     hrs     |
+| Themes / Darkmode            |    1     |      6hr       |     hr      |
 | Add multiple decks           |    2     |      2hr       |     hr      |
 | Nested Nav menu for Readings |   0.5    |      2hr       |     hr      |
+| 7 card reading               |   2.5    |      2hr       |     hr      |
+| Pentagram reading            |    2     |      2hr       |     hr      |
+| Celtic Cross reading         |    1     |      4hr       |     hr      |
 | Card fullscreen progression  |    3     |      6hr       |     hr      |
 | Card animations              |   0.5    |      6hr       |     hr      |
 | Create and add Favicon       |    0     |      3hr       |     hr      |
-| Total                        |          |     25hrs      |     hrs     |
+| Total                        |          |     33hrs      |     hr      |
 
 ## Additional Libraries
 
