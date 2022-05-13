@@ -7,8 +7,8 @@
 | Day       | Deliverable                             | Status      |
 | --------- | --------------------------------------- | ----------- |
 | Friday    | Project Planning                        | complete    |
-| Sat/Sun   | Project setup and skeleton              | in progress |
-| Monday    | Working components                      | incomplete  |
+| Sat/Sun   | Project setup and skeleton              | complete    |
+| Monday    | Working components                      | in progress |
 | Tuesday   | Styling & complete MVP                  | incomplete  |
 | Wednesday | Celtic cross reading template           | incomplete  |
 | Thursday  | Post MVP styling (themes) / other decks | incomplete  |

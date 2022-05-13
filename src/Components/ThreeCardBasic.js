@@ -1,10 +1,11 @@
 import Card from '@mui/material/Card'
+import CardMedia from '@mui/material/CardMedia'
 
 const ThreeCardBasic = (props) => {
 	const allCards = props.allCards.map((card) => {
 		return (
 			<Card key={card.name_short}>
-				<img src={card.url} alt={card.name} />
+				<CardMedia component="img" image={card.url} alt={card.name} />
 			</Card>
 		)
 	})
