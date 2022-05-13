@@ -8,6 +8,7 @@ import IconButton from '@mui/material/IconButton'
 import MenuIcon from '@mui/icons-material/Menu'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
+import { Link } from 'react-router-dom'
 
 const NavBar = () => {
 	const [anchorEl, setAnchorEl] = React.useState(null)
@@ -45,9 +46,17 @@ const NavBar = () => {
 							'aria-labelledby': 'basic-button'
 						}}
 					>
-						<MenuItem onClick={handleClose}>Profile</MenuItem>
-						<MenuItem onClick={handleClose}>My account</MenuItem>
-						<MenuItem onClick={handleClose}>Logout</MenuItem>
+						<Link to={'/'}>
+							<MenuItem onClick={handleClose}>Home</MenuItem>
+						</Link>
+						<Link to={'/decks'}>
+							<MenuItem onClick={handleClose}>Decks</MenuItem>
+						</Link>
+						<Link to={'/threecardbasic'}>
+							<MenuItem onClick={handleClose}>
+								Three Card Basic Reading
+							</MenuItem>
+						</Link>
 					</Menu>
 					<Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
 						Tarot Reader
