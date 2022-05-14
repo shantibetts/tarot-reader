@@ -2,28 +2,32 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardMedia'
 import CardActionArea from '@mui/material/CardActionArea'
 import CardMedia from '@mui/material/CardMedia'
+import Grid from '@mui/material/Grid'
 
 const TarotCard = (props) => {
-	console.log(props)
-	if (props.card.name) {
+	if (props.card.name !== 'emptyCard') {
 		return (
-			<Card sx={{ width: '100px', height: '170px' }}>
-				<CardActionArea>
-					<CardMedia
-						component="img"
-						image={props.card.url}
-						alt={props.card.name}
-					/>
-				</CardActionArea>
-			</Card>
+			<Grid item xs={props.span}>
+				<Card sx={{ width: props.width, height: props.height }}>
+					<CardActionArea>
+						<CardMedia
+							component="img"
+							image={props.card.url}
+							alt={props.card.name}
+						/>
+					</CardActionArea>
+				</Card>
+			</Grid>
 		)
 	} else {
 		return (
-			<Card sx={{ width: '100px', height: '170' }}>
-				<CardActionArea>
-					<CardContent />
-				</CardActionArea>
-			</Card>
+			<Grid item xs={props.span}>
+				<Card sx={{ width: props.width, height: props.height }}>
+					<CardActionArea>
+						<CardContent />
+					</CardActionArea>
+				</Card>
+			</Grid>
 		)
 	}
 }
