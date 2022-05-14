@@ -2,7 +2,7 @@ import './App.css'
 import { useState, useEffect } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
 import Home from './Components/Home'
-import Decks from './Components/Decks'
+import DeckList from './Components/DeckList'
 import ThreeCardBasic from './Components/ThreeCardBasic'
 import NavBar from './Components/NavBar'
 import About from './Components/About'
@@ -28,7 +28,7 @@ function App() {
 			<NavBar />
 			<Routes>
 				<Route path="/" element={<Home />} />
-				<Route path="/decks" element={<Decks allCards={allCards} />} />
+				<Route path="/decks" element={<DeckList />} />
 				<Route
 					path="/threeCardBasic"
 					element={<ThreeCardBasic allCards={allCards} />}
