@@ -1,7 +1,13 @@
-const About = () => {
+import Typography from '@mui/material/Typography'
+import Title from './Title'
+
+const About = (props) => {
 	return (
 		<div className="about">
-			<h1>About TarotApp</h1>
+			<Title
+				title="About"
+				text="A basic tarot reader to get comfortable with tarot readings and the meanings of the cards and their positions in different spreads"
+			/>
 		</div>
 	)
 }
