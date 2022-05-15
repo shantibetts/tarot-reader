@@ -9,25 +9,25 @@ import * as React from 'react'
 import TarotCard from './TarotCard'
 import Description from './Description'
 import Button from '@mui/material/Button'
+import readingConfigs from '../readingConfigs'
 
 const ThreeCardBasic = (props) => {
-	const [threeCards, setThreeCards] = useState([
-		[
-			{ name: 'emptyCard', name_short: 'ec1' },
-			{ name: 'emptyCard', name_short: 'ec2' },
-			{ name: 'emptyCard', name_short: 'ec3' }
-		],
-		0
-	])
+	console.log(readingConfigs, readingConfigs.threeCardBasic)
+	const [threeCards, setThreeCards] = useState(readingConfigs.threeCardBasic)
 	const [description, setDescription] = useState(null)
 	const [shuffledCards, setShuffledCards] = useState([])
 
-	useEffect(() => {
-		let newShuffledCards = [...props.allCards]
+	const shuffleCards = (cards) => {
+		let newShuffledCards = [...cards]
 		newShuffledCards = newShuffledCards
 			.map((card) => ({ card: card, random: Math.random() }))
 			.sort((a, b) => a.random - b.random)
 			.map(({ card }) => card)
+		return newShuffledCards
+	}
+
+	useEffect(() => {
+		const newShuffledCards = shuffleCards(props.allCards)
 		setShuffledCards(newShuffledCards)
 		console.log(newShuffledCards)
 	}, [props.allCards])
@@ -40,6 +40,12 @@ const ThreeCardBasic = (props) => {
 		i++
 		setShuffledCards(newShuffledCards)
 		setThreeCards([newThreeCards, i])
+	}
+
+	const handleNewReading = () => {
+		const newShuffledCards = shuffleCards(props.allCards)
+		setShuffledCards(newShuffledCards)
+		setThreeCards(readingConfigs.threeCardBasic)
 	}
 
 	const handleDescription = (card) => {
@@ -57,17 +63,16 @@ const ThreeCardBasic = (props) => {
 		/>
 	))
 
-	const descriptionDisplay = () => {
-		if (description && description.cardDescription) {
-			return (
-				<Description
-					titleTop={'Position'}
-					textTop={'Past'}
-					titleBottom={'Card'}
-					textBottom={'emptyCard'}
-				/>
-			)
-		}
+	let descriptionDisplay = ''
+	if (description && description.cardDescription) {
+		descriptionDisplay = (
+			<Description
+				titleTop={'Position'}
+				textTop={'Past'}
+				titleBottom={'Card'}
+				textBottom={'emptyCard'}
+			/>
+		)
 	}
 
 	return (
@@ -80,6 +85,10 @@ const ThreeCardBasic = (props) => {
 				<Button onClick={handleDeal} size="medium" variant="contained">
 					Deal
 				</Button>
+				<Button onClick={handleNewReading} size="medium" variant="contained">
+					New Reading
+				</Button>
+				{descriptionDisplay}
 			</Container>
 		</React.Fragment>
 	)

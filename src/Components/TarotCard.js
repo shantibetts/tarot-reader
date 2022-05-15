@@ -9,7 +9,7 @@ const TarotCard = (props) => {
 		return (
 			<Grid item xs={props.span}>
 				<Card sx={{ width: props.width, height: props.height }}>
-					<CardActionArea onClick={props.handleDescription}>
+					<CardActionArea onClick={() => props.handleDescription(props.card)}>
 						<CardMedia
 							component="img"
 							image={props.card.url}

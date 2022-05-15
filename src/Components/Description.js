@@ -6,6 +6,7 @@ import Grid from '@mui/material/Grid'
 import CssBaseline from '@mui/material/CssBaseline'
 import * as React from 'react'
 import Typography from '@mui/material/Typography'
+import Button from '@mui/material/Button'
 
 const Description = (props) => {
 	return (
@@ -24,6 +25,13 @@ const Description = (props) => {
 				<Typography variant="p">{props.textBottom}</Typography>
 				<hr style={{ width: '60%' }} />
 				<br />
+				<Button
+					onClick={() => props.handleDescription(null)}
+					size="medium"
+					variant="outlined"
+				>
+					Done
+				</Button>
 			</Container>
 		</React.Fragment>
 	)
