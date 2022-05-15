@@ -18,7 +18,6 @@ function App() {
 					card.url = `https://www.sacred-texts.com/tarot/pkt/img/${card.name_short}.jpg`
 					card.reversed = false
 				})
-				console.log(cards)
 				setAllCards(cards)
 			})
 			.catch(() => console.log('Problem with Tarot Cards API fetch'))
