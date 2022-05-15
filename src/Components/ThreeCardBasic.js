@@ -12,8 +12,7 @@ import Button from '@mui/material/Button'
 import readingConfigs from '../readingConfigs'
 
 const ThreeCardBasic = (props) => {
-	console.log(readingConfigs, readingConfigs.threeCardBasic)
-	const [threeCards, setThreeCards] = useState(readingConfigs.threeCardBasic)
+	const [threeCards, setThreeCards] = useState(readingConfigs().threeCardBasic)
 	const [description, setDescription] = useState(null)
 	const [shuffledCards, setShuffledCards] = useState([])
 
@@ -45,7 +44,7 @@ const ThreeCardBasic = (props) => {
 	const handleNewReading = () => {
 		const newShuffledCards = shuffleCards(props.allCards)
 		setShuffledCards(newShuffledCards)
-		setThreeCards(readingConfigs.threeCardBasic)
+		setThreeCards(readingConfigs().threeCardBasic)
 	}
 
 	const handleDescription = (card) => {
