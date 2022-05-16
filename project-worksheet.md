@@ -4,15 +4,15 @@
 
 ## Project Schedule
 
-| Day       | Deliverable                             | Status      |
-| --------- | --------------------------------------- | ----------- |
-| Friday    | Project Planning                        | complete    |
-| Sat/Sun   | Project setup and skeleton              | complete    |
-| Monday    | Working components                      | in progress |
-| Tuesday   | Styling & complete MVP                  | incomplete  |
-| Wednesday | Celtic cross reading template           | incomplete  |
-| Thursday  | Post MVP styling (themes) / other decks | incomplete  |
-| Friday    | Present                                 | incomplete  |
+| Day       | Deliverable                             | Status     |
+| --------- | --------------------------------------- | ---------- |
+| Friday    | Project Planning                        | complete   |
+| Sat/Sun   | Project setup and skeleton              | complete   |
+| Monday    | Working components                      | complete   |
+| Tuesday   | Styling & complete MVP                  | incomplete |
+| Wednesday | Celtic cross reading template           | incomplete |
+| Thursday  | Post MVP styling (themes) / other decks | incomplete |
+| Friday    | Present                                 | incomplete |
 
 ## Project Description
 
@@ -82,7 +82,7 @@ I want to create an interactive app that will do simple, and then not so simple 
 | Routes, API, State, Skeleton Components |    5     |      3hr       |     2hr     |
 | Display Cards + Descriptions            |    5     |      2hr       |     3hr     |
 | Nav Menu                                |    4     |      2hr       |     1hr     |
-| Previews of decks + readings for Home   |    4     |      2hr       |     2hr     |
+| Previews of decks + readings for Home   |    4     |      2hr       |     3hr     |
 | Dynamic Styling                         |    3     |      6hr       |     3hr     |
 | Total                                   |          |     15hrs      |     hr      |
 

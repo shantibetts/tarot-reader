@@ -1,7 +1,9 @@
+import ThreeCardBasic from './Images/ThreeCardBasic.png'
+
 const readingConfigs = () => {
 	return [
 		{
-			name: 'Three Card Basic',
+			name: 'Three Card Reading',
 			reading: [
 				{
 					name: 'emptyCard',
@@ -25,8 +27,7 @@ const readingConfigs = () => {
 			index: 0,
 			description:
 				'a simple reading, where the three cards represent the past, present and future',
-			imageUrl:
-				'https://via.placeholder.com/600x200?text=Three+Card+Basic+Reading',
+			imageUrl: ThreeCardBasic,
 			imageAlt: 'Three cards in a row'
 		}
 	]
