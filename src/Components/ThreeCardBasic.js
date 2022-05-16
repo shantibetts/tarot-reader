@@ -9,6 +9,7 @@ import * as React from 'react'
 import TarotCard from './TarotCard'
 import Description from './Description'
 import Button from '@mui/material/Button'
+import ToggleButton from '@mui/material/ToggleButton'
 import readingConfigs from '../readingConfigs'
 
 const ThreeCardBasic = (props) => {
@@ -74,6 +75,14 @@ const ThreeCardBasic = (props) => {
 		)
 	}
 
+	const disableDeal = () => {
+		if (threeCards[1] === 2) {
+			return true
+		} else {
+			return false
+		}
+	}
+
 	return (
 		<React.Fragment>
 			<CssBaseline />
@@ -81,9 +90,13 @@ const ThreeCardBasic = (props) => {
 				<Grid container spacing={2}>
 					{cardsDisplay}
 				</Grid>
-				<Button onClick={handleDeal} size="medium" variant="contained">
+				<ToggleButton
+					onClick={handleDeal}
+					disabled={threeCards[1] === 3 ? true : false}
+					value="deal"
+				>
 					Deal
-				</Button>
+				</ToggleButton>
 				<Button onClick={handleNewReading} size="medium" variant="contained">
 					New Reading
 				</Button>
