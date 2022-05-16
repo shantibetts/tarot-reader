@@ -122,3 +122,74 @@ useEffect(() => {
 ```
 
 ## Issues and Resolutions
+
+### MUI Card Warning:
+
+I'm getting a warning with my current TarotCard component:
+
+```js
+Warning: Failed prop type: MUI: Either `children`, `image`, `src` or `component` prop must be specified.
+    at CardMedia (http://localhost:3000/static/js/bundle.js:7757:82)
+    at TarotCard (http://localhost:3000/static/js/bundle.js:1071:13)
+    at div
+    at http://localhost:3000/static/js/bundle.js:2277:66
+    at Grid (http://localhost:3000/static/js/bundle.js:8887:87)
+    at div
+    at http://localhost:3000/static/js/bundle.js:2277:66
+    at Container (http://localhost:3000/static/js/bundle.js:7992:82)
+    at ThreeCardBasic (http://localhost:3000/static/js/bundle.js:1226:86)
+    at Routes (http://localhost:3000/static/js/bundle.js:60672:5)
+    at div
+    at App (http://localhost:3000/static/js/bundle.js:60:82)
+    at Router (http://localhost:3000/static/js/bundle.js:60605:15)
+    at BrowserRouter (http://localhost:3000/static/js/bundle.js:59414:5)
+printWarning	@	react-jsx-dev-runtime.development.js:97
+error	@	react-jsx-dev-runtime.development.js:71
+checkPropTypes	@	react-jsx-dev-runtime.development.js:629
+validatePropTypes	@	react-jsx-dev-runtim…development.js:1162
+jsxWithValidation	@	react-jsx-dev-runtim…development.js:1282
+TarotCard	@	TarotCard.js:26
+renderWithHooks	@	react-dom.development.js:16175
+mountIndeterminateComponent	@	react-dom.development.js:20913
+beginWork	@	react-dom.development.js:22416
+beginWork$1	@	react-dom.development.js:27381
+performUnitOfWork	@	react-dom.development.js:26513
+workLoopSync	@	react-dom.development.js:26422
+renderRootSync	@	react-dom.development.js:26390
+performConcurrentWorkOnRoot	@	react-dom.development.js:25694
+workLoop	@	scheduler.development.js:266
+flushWork	@	scheduler.development.js:239
+performWorkUntilDeadline	@	scheduler.development.js:533
+```
+
+Following the trail to TarotCard:13 (and later :26):
+
+```js
+if (props.card.name !== 'emptyCard') {
+	return (
+		<Grid item xs={props.span}>
+			<Card sx={{ width: props.width, height: props.height }}>
+				<CardActionArea onClick={() => props.handleDescription(props.card)}>
+					<CardMedia
+						component="img"
+						image={props.card.url}
+						alt={props.card.name}
+					/>
+				</CardActionArea>
+			</Card>
+		</Grid>
+	)
+} else {
+	return (
+		<Grid item xs={props.span}>
+			<Card sx={{ width: props.width, height: props.height }}>
+				<CardActionArea onClick={() => props.handleDescription(props.card)}>
+					<CardContent />
+				</CardActionArea>
+			</Card>
+		</Grid>
+	)
+}
+```
+
+We see that TarotCard is using logic to write either a card with an image or a blank one. Line 13 is defining CardMedia, which does contain an image prop, or if the card is empty, line 26 is defining CardActionArea, which does not have a prop of "children, image, src or component." I think this is the source of the error, but I'm not sure how to solve it, as I want the card to display an empty image, but still have the on-click functionality to allow for the description for that position.

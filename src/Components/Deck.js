@@ -23,7 +23,11 @@ const Deck = (props) => {
 		)
 	})
 	const linkList = props.links.map((link) => {
-		return <Button size="small">{link.name}</Button>
+		return (
+			<Button key={link.name} size="small">
+				{link.name}
+			</Button>
+		)
 	})
 
 	return (

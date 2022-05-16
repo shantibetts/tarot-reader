@@ -29,13 +29,15 @@ const ThreeCardBasic = (props) => {
 	useEffect(() => {
 		const newShuffledCards = shuffleCards(props.allCards)
 		setShuffledCards(newShuffledCards)
-		console.log(newShuffledCards)
 	}, [props.allCards])
 
 	const handleDeal = () => {
 		const newShuffledCards = [...shuffledCards]
 		const newCard = newShuffledCards.shift()
 		let [newThreeCards, i] = [...threeCards]
+		newCard.positionName = newThreeCards[i].positionName
+		newCard.positionDescription = newThreeCards[i].positionDescription
+		console.log(newCard)
 		newThreeCards.splice(i, 1, newCard)
 		i++
 		setShuffledCards(newShuffledCards)
@@ -46,6 +48,7 @@ const ThreeCardBasic = (props) => {
 		const newShuffledCards = shuffleCards(props.allCards)
 		setShuffledCards(newShuffledCards)
 		setThreeCards(readingConfigs().threeCardBasic)
+		setDescription(null)
 	}
 
 	const handleDescription = (card) => {
@@ -64,23 +67,10 @@ const ThreeCardBasic = (props) => {
 	))
 
 	let descriptionDisplay = ''
-	if (description && description.cardDescription) {
+	if (description) {
 		descriptionDisplay = (
-			<Description
-				titleTop={'Position'}
-				textTop={'Past'}
-				titleBottom={'Card'}
-				textBottom={'emptyCard'}
-			/>
+			<Description description={description} setDescription={setDescription} />
 		)
-	}
-
-	const disableDeal = () => {
-		if (threeCards[1] === 2) {
-			return true
-		} else {
-			return false
-		}
 	}
 
 	return (
@@ -90,13 +80,14 @@ const ThreeCardBasic = (props) => {
 				<Grid container spacing={2}>
 					{cardsDisplay}
 				</Grid>
-				<ToggleButton
+				<Button
 					onClick={handleDeal}
 					disabled={threeCards[1] === 3 ? true : false}
-					value="deal"
+					size="medium"
+					variant="contained"
 				>
 					Deal
-				</ToggleButton>
+				</Button>
 				<Button onClick={handleNewReading} size="medium" variant="contained">
 					New Reading
 				</Button>

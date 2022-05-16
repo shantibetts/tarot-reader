@@ -22,8 +22,11 @@ const TarotCard = (props) => {
 	} else {
 		return (
 			<Grid item xs={props.span}>
-				<Card sx={{ width: props.width, height: props.height }}>
-					<CardActionArea>
+				<Card>
+					<CardActionArea
+						onClick={() => props.handleDescription(props.card)}
+						sx={{ width: props.width, height: props.height }}
+					>
 						<CardContent />
 					</CardActionArea>
 				</Card>
