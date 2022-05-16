@@ -13,7 +13,7 @@ import ToggleButton from '@mui/material/ToggleButton'
 import readingConfigs from '../readingConfigs'
 
 const ThreeCardBasic = (props) => {
-	const [threeCards, setThreeCards] = useState(readingConfigs().threeCardBasic)
+	const [threeCards, setThreeCards] = useState(readingConfigs()[0])
 	const [description, setDescription] = useState(null)
 	const [shuffledCards, setShuffledCards] = useState([])
 
@@ -34,20 +34,21 @@ const ThreeCardBasic = (props) => {
 	const handleDeal = () => {
 		const newShuffledCards = [...shuffledCards]
 		const newCard = newShuffledCards.shift()
-		let [newThreeCards, i] = [...threeCards]
-		newCard.positionName = newThreeCards[i].positionName
-		newCard.positionDescription = newThreeCards[i].positionDescription
-		console.log(newCard)
-		newThreeCards.splice(i, 1, newCard)
-		i++
+		let newThreeCards = { ...threeCards }
+		newCard.positionName =
+			newThreeCards.reading[newThreeCards.index].positionName
+		newCard.positionDescription =
+			newThreeCards.reading[newThreeCards.index].positionDescription
+		newThreeCards.reading.splice(newThreeCards.index, 1, newCard)
+		newThreeCards.index++
 		setShuffledCards(newShuffledCards)
-		setThreeCards([newThreeCards, i])
+		setThreeCards(newThreeCards)
 	}
 
 	const handleNewReading = () => {
 		const newShuffledCards = shuffleCards(props.allCards)
 		setShuffledCards(newShuffledCards)
-		setThreeCards(readingConfigs().threeCardBasic)
+		setThreeCards(readingConfigs()[0])
 		setDescription(null)
 	}
 
@@ -55,7 +56,7 @@ const ThreeCardBasic = (props) => {
 		setDescription(card)
 	}
 
-	const cardsDisplay = threeCards[0].map((card) => (
+	const cardsDisplay = threeCards.reading.map((card) => (
 		<TarotCard
 			key={card.name_short}
 			card={card}
@@ -82,7 +83,7 @@ const ThreeCardBasic = (props) => {
 				</Grid>
 				<Button
 					onClick={handleDeal}
-					disabled={threeCards[1] === 3 ? true : false}
+					disabled={threeCards.index === 3 ? true : false}
 					size="medium"
 					variant="contained"
 				>

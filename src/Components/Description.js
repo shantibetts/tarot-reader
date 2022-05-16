@@ -45,14 +45,14 @@ const Description = (props) => {
 					<br />
 					<CardActions>
 						<Button
-							expand={expanded}
+							expand={expanded ? `${expanded}` : undefined}
 							onClick={handleExpandClick}
 							aria-expanded={expanded}
 							aria-label="show more"
 							size="medium"
 							variant="outlined"
 						>
-							Read More
+							{expanded ? 'Read Less' : 'Read More'}
 						</Button>
 						<Button
 							onClick={() => props.setDescription(null)}

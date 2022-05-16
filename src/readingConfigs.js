@@ -1,7 +1,8 @@
 const readingConfigs = () => {
-	return {
-		threeCardBasic: [
-			[
+	return [
+		{
+			name: 'Three Card Basic',
+			reading: [
 				{
 					name: 'emptyCard',
 					name_short: 'ec1',
@@ -21,9 +22,14 @@ const readingConfigs = () => {
 					positionDescription: `This card represents the qurant's future, as it relates to the question asked in this reading`
 				}
 			],
-			0
-		]
-	}
+			index: 0,
+			description:
+				'a simple reading, where the three cards represent the past, present and future',
+			imageUrl:
+				'https://via.placeholder.com/600x200?text=Three+Card+Basic+Reading',
+			imageAlt: 'Three cards in a row'
+		}
+	]
 }
 
 export default readingConfigs

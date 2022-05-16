@@ -79,11 +79,11 @@ I want to create an interactive app that will do simple, and then not so simple 
 
 | Component                               | Priority | Estimated Time | Actual Time |
 | --------------------------------------- | :------: | :------------: | :---------: |
-| Routes, API, State, Skeleton Components |    5     |      3hr       |     hr      |
-| Display Cards + Descriptions            |    5     |      2hr       |     hr      |
-| Nav Menu                                |    4     |      2hr       |     hr      |
-| Previews of decks + readings for Home   |    4     |      2hr       |     hr      |
-| Dynamic Styling                         |    3     |      6hr       |     hr      |
+| Routes, API, State, Skeleton Components |    5     |      3hr       |     2hr     |
+| Display Cards + Descriptions            |    5     |      2hr       |     3hr     |
+| Nav Menu                                |    4     |      2hr       |     1hr     |
+| Previews of decks + readings for Home   |    4     |      2hr       |     2hr     |
+| Dynamic Styling                         |    3     |      6hr       |     3hr     |
 | Total                                   |          |     15hrs      |     hr      |
 
 #### PostMVP
