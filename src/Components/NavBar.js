@@ -8,7 +8,7 @@ import IconButton from '@mui/material/IconButton'
 import MenuIcon from '@mui/icons-material/Menu'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
-import { Link } from 'react-router-dom'
+import { Link as RouterLink } from 'react-router-dom'
 
 const NavBar = () => {
 	const [anchorEl, setAnchorEl] = React.useState(null)
@@ -46,20 +46,22 @@ const NavBar = () => {
 							'aria-labelledby': 'basic-button'
 						}}
 					>
-						<Link to={'/'}>
-							<MenuItem onClick={handleClose}>Home</MenuItem>
-						</Link>
-						<Link to={'/decks'}>
-							<MenuItem onClick={handleClose}>Decks</MenuItem>
-						</Link>
-						<Link to={'/threecardbasic'}>
-							<MenuItem onClick={handleClose}>
-								Three Card Basic Reading
-							</MenuItem>
-						</Link>
-						<Link to={'/about'}>
-							<MenuItem onClick={handleClose}>About</MenuItem>
-						</Link>
+						<MenuItem onClick={handleClose} component={RouterLink} to="/">
+							Home
+						</MenuItem>
+						<MenuItem onClick={handleClose} component={RouterLink} to="/decks">
+							Decks
+						</MenuItem>
+						<MenuItem
+							onClick={handleClose}
+							component={RouterLink}
+							to="/threecardbasic"
+						>
+							Three Card Basic Reading
+						</MenuItem>
+						<MenuItem onClick={handleClose} component={RouterLink} to="/about">
+							About
+						</MenuItem>
 					</Menu>
 					<Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
 						Tarot Reader

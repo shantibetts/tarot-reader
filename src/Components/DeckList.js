@@ -21,7 +21,7 @@ const DeckList = () => {
 		<div className="deckList">
 			<br />
 			<Typography variant="h2">Tarot Decks</Typography>
-			<hr style={{ width: '60%' }} />
+			<hr style={{ width: '80%' }} />
 			<br />
 			{deckList}
 		</div>

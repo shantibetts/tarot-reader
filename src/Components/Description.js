@@ -25,23 +25,26 @@ const Description = (props) => {
 				<CssBaseline />
 				<Container maxWidth="sm">
 					<br />
-					<hr style={{ width: '60%' }} />
+					<hr style={{ width: '80%' }} />
+					<br />
 					<Typography variant="h4">{props.description.positionName}</Typography>
+					<br />
 					<Typography variant="p" gutterBottom>
 						{props.description.positionDescription}
 					</Typography>
-					<hr style={{ width: '40%' }} />
+					<hr style={{ width: '60%' }} />
 					<br />
 					<Typography variant="h4">{props.description.name}</Typography>
+					<br />
 					<Typography variant="p">{props.description.meaning_up}</Typography>
 					<Collapse in={expanded} timeout="auto" unmountOnExit>
 						<CardContent>
-							<hr style={{ width: '40%' }} />
+							<hr style={{ width: '60%' }} />
 							<br />
-							<Typography paragraph>{props.description.desc}</Typography>
+							<Typography>{props.description.desc}</Typography>
 						</CardContent>
 					</Collapse>
-					<hr style={{ width: '60%' }} />
+					<hr style={{ width: '80%' }} />
 					<br />
 					<CardActions>
 						<Button

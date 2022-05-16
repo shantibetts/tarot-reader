@@ -8,6 +8,8 @@ import Title from './Title'
 import readingConfigs from '../readingConfigs'
 import Typography from '@mui/material/Typography'
 import CardMedia from '@mui/material/CardMedia'
+import { Link as RouterLink } from 'react-router-dom'
+import Container from '@mui/material/Container'
 
 const Home = () => {
 	const deckList = tarotDecks.map(
@@ -19,7 +21,7 @@ const Home = () => {
 					description={descriptionShort}
 					links={[
 						{ name: 'Select', url: '' },
-						{ name: 'More Info', url: '' }
+						{ name: 'More Info', url: '/decks' }
 					]}
 					cardPreviews={cardPreviews}
 				/>
@@ -30,6 +32,11 @@ const Home = () => {
 		({ name, description, imageUrl, imageAlt }) => {
 			return (
 				<Card key={name}>
+					<br />
+					<Typography gutterBottom variant="h5" component="div">
+						{name}
+					</Typography>
+					<br />
 					<CardMedia
 						component="img"
 						height="140"
@@ -37,16 +44,22 @@ const Home = () => {
 						alt={imageAlt}
 					/>
 					<CardContent>
-						<Typography gutterBottom variant="h5" component="div">
-							{name}
-						</Typography>
 						<Typography variant="body">{description}</Typography>
 					</CardContent>
+					<br />
 					<CardActions>
-						<Button size="medium" variant="outlined">
-							Go to Reading
-						</Button>
+						<Container>
+							<Button
+								size="medium"
+								variant="outlined"
+								component={RouterLink}
+								to="/threecardbasic"
+							>
+								Go to Reading
+							</Button>
+						</Container>
 					</CardActions>
+					<br />
 				</Card>
 			)
 		}
@@ -58,6 +71,7 @@ const Home = () => {
 				text="Choose a deck and a reading layout to get started"
 			/>
 			{deckList}
+			<br />
 			{readingList}
 		</div>
 	)

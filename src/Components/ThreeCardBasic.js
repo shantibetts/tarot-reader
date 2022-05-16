@@ -78,20 +78,25 @@ const ThreeCardBasic = (props) => {
 		<React.Fragment>
 			<CssBaseline />
 			<Container maxWidth="sm">
+				<br />
 				<Grid container spacing={2}>
 					{cardsDisplay}
 				</Grid>
-				<Button
-					onClick={handleDeal}
-					disabled={threeCards.index === 3 ? true : false}
-					size="medium"
-					variant="contained"
-				>
-					Deal
-				</Button>
-				<Button onClick={handleNewReading} size="medium" variant="contained">
-					New Reading
-				</Button>
+				<br />
+				<Container sx={{ display: 'flex', justifyContent: 'space-around' }}>
+					<Button
+						onClick={handleDeal}
+						disabled={threeCards.index === 3 ? true : false}
+						size="medium"
+						variant="outlined"
+					>
+						Deal
+					</Button>
+					<Button onClick={handleNewReading} size="medium" variant="outlined">
+						New Reading
+					</Button>
+				</Container>
+
 				{descriptionDisplay}
 			</Container>
 		</React.Fragment>
