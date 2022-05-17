@@ -32,7 +32,7 @@ const Description = (props) => {
 					<Typography variant="h4" sx={{ py: 4 }}>
 						{props.description.name}
 					</Typography>
-					<Typography variant="body1" sx={{ pb: 4 }}>
+					<Typography variant="body1" sx={{ pb: 2 }}>
 						{props.description.meaning_up}
 					</Typography>
 					<Collapse
@@ -41,11 +41,22 @@ const Description = (props) => {
 						unmountOnExit
 						sx={{ p: 0 }}
 					>
-						<Divider variant="middle" />
-						<Typography variant="body1" sx={{ py: 4 }}>
+						<Divider variant="middle" sx={{ py: 2 }} />
+						<Typography variant="body1" sx={{ py: 2 }}>
 							{props.description.desc}
 						</Typography>
 					</Collapse>
+					<Button
+						expand={props.expanded ? 'true' : undefined}
+						onClick={handleExpandClick}
+						aria-expanded={props.expanded}
+						aria-label="show more"
+						size="small"
+						sx={{ mb: 4 }}
+					>
+						{props.expanded ? 'Read Less' : 'Read More'}
+					</Button>
+					<br />
 					<Button
 						onClick={() => props.setDescription(null)}
 						size="medium"
@@ -53,17 +64,6 @@ const Description = (props) => {
 						sx={{ m: 1 }}
 					>
 						Done
-					</Button>
-					<Button
-						expand={props.expanded ? 'true' : undefined}
-						onClick={handleExpandClick}
-						aria-expanded={props.expanded}
-						aria-label="show more"
-						size="medium"
-						variant="outlined"
-						sx={{ m: 1 }}
-					>
-						{props.expanded ? 'Read Less' : 'Read More'}
 					</Button>
 				</Container>
 			</React.Fragment>

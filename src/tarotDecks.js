@@ -23,13 +23,16 @@ const tarotDecks = [
 	hundreds of others, but the images of the RWS Tarot are the ones which
 	are instantly recognizable. Holly Voley has graciously scanned a set
 	of vintage Tarot cards for sacred-texts.com, the earliest in her
-	collection. These Tarot card images are unambiguously in the public
+	collection, which are the images displayed here. These Tarot card images are unambiguously in the public
 	domain in the United States, and differ only slightly from the US
 	Games Tarot deck. This deck is the one known as the 'Pamela-A' deck
 	with the dried mud pattern on the back of the cards.`,
 		links: [
 			{ name: 'Sacred-Texts', url: 'https://www.sacred-texts.com/tarot/' },
-			{ name: 'Holly Voley', url: 'http://home.comcast.net/~vilex/' }
+			{
+				name: 'Purchase',
+				url: 'https://www.amazon.com/Rider-Tarot-Arthur-Edward-Waite/dp/091386613X'
+			}
 		]
 	}
 ]
