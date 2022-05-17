@@ -3,12 +3,18 @@ import CardContent from '@mui/material/CardMedia'
 import CardActionArea from '@mui/material/CardActionArea'
 import CardMedia from '@mui/material/CardMedia'
 import Grid from '@mui/material/Grid'
+import emptyCard from '../Images/emptyCard.png'
 
 const TarotCard = (props) => {
 	if (props.card.name !== 'emptyCard') {
 		return (
 			<Grid item xs={props.span}>
-				<Card sx={{ width: props.width, height: props.height }}>
+				<Card
+					sx={{
+						minWidth: props.width,
+						minHeight: props.height
+					}}
+				>
 					<CardActionArea onClick={() => props.handleDescription(props.card)}>
 						<CardMedia
 							component="img"
@@ -25,9 +31,16 @@ const TarotCard = (props) => {
 				<Card>
 					<CardActionArea
 						onClick={() => props.handleDescription(props.card)}
-						sx={{ width: props.width, height: props.height }}
+						sx={{
+							minWidth: props.width,
+							minHeight: props.height
+						}}
 					>
-						<CardContent />
+						<CardMedia
+							component="img"
+							image={emptyCard}
+							alt={props.card.name}
+						/>
 					</CardActionArea>
 				</Card>
 			</Grid>

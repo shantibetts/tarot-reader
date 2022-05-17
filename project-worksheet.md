@@ -193,3 +193,7 @@ if (props.card.name !== 'emptyCard') {
 ```
 
 We see that TarotCard is using logic to write either a card with an image or a blank one. Line 13 is defining CardMedia, which does contain an image prop, or if the card is empty, line 26 is defining CardActionArea, which does not have a prop of "children, image, src or component." I think this is the source of the error, but I'm not sure how to solve it, as I want the card to display an empty image, but still have the on-click functionality to allow for the description for that position.
+
+### Resolution
+
+I added a blank card of appropriate dimensions to a CardMedia component. It solved two issues: first the blank card makes sure the blank card spaces show at the correct aspect ratio before the picture is populated, and it also provides the child necessary for the card object. The too-short still shows momentarily before getting replaced with the Tarot image, so I would like to find a better way to determine the card-object's height.

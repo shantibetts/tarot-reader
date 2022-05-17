@@ -20,7 +20,7 @@ root.render(
 	<React.StrictMode>
 		<ThemeProvider theme={theme}>
 			<BrowserRouter>
-				<App />
+				<App sx={{ minWidth: '330px' }} />
 			</BrowserRouter>
 		</ThemeProvider>
 	</React.StrictMode>

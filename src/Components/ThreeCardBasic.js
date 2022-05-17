@@ -63,8 +63,8 @@ const ThreeCardBasic = (props) => {
 			key={card.name_short}
 			card={card}
 			span={4}
-			width={'25vw'}
-			height={'44vw'}
+			width={88.7}
+			height={154}
 			handleDescription={handleDescription}
 		/>
 	))
@@ -84,7 +84,7 @@ const ThreeCardBasic = (props) => {
 	return (
 		<React.Fragment>
 			<CssBaseline />
-			<Container maxWidth="sm">
+			<Container maxWidth="xs">
 				<Grid container spacing={2} sx={{ my: 4 }}>
 					{cardsDisplay}
 				</Grid>
