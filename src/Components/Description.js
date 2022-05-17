@@ -10,53 +10,76 @@ import Button from '@mui/material/Button'
 import CardActions from '@mui/material/CardActions'
 import Collapse from '@mui/material/Collapse'
 import CardContent from '@mui/material/CardContent'
-import { useState } from 'react'
+import Divider from '@mui/material/Divider'
 
 const Description = (props) => {
-	const [expanded, setExpanded] = useState(false)
-
 	const handleExpandClick = () => {
-		setExpanded(!expanded)
+		props.setExpanded(!props.expanded)
 	}
 
 	if (props.description.name !== 'emptyCard') {
 		return (
 			<React.Fragment>
 				<CssBaseline />
-				<Container maxWidth="sm">
-					<br />
-					<hr style={{ width: '80%' }} />
-					<br />
-					<Typography variant="h4">{props.description.positionName}</Typography>
-					<br />
-					<Typography variant="p" gutterBottom>
+				<Container maxWidth="sm" sx={{ px: 0, py: 4 }}>
+					<Typography variant="h4" sx={{ pt: 2 }}>
+						{props.description.positionName}
+					</Typography>
+					<Typography variant="body1" sx={{ py: 4 }}>
 						{props.description.positionDescription}
 					</Typography>
-					<hr style={{ width: '60%' }} />
-					<br />
-					<Typography variant="h4">{props.description.name}</Typography>
-					<br />
-					<Typography variant="p">{props.description.meaning_up}</Typography>
-					<Collapse in={expanded} timeout="auto" unmountOnExit>
-						<CardContent>
-							<hr style={{ width: '60%' }} />
-							<br />
-							<Typography>{props.description.desc}</Typography>
-						</CardContent>
+					<Divider variant="middle" />
+					<Typography variant="h4" sx={{ py: 4 }}>
+						{props.description.name}
+					</Typography>
+					<Typography variant="body1" sx={{ pb: 4 }}>
+						{props.description.meaning_up}
+					</Typography>
+					<Collapse
+						in={props.expanded}
+						timeout="auto"
+						unmountOnExit
+						sx={{ p: 0 }}
+					>
+						<Divider variant="middle" />
+						<Typography variant="body1" sx={{ py: 4 }}>
+							{props.description.desc}
+						</Typography>
 					</Collapse>
-					<hr style={{ width: '80%' }} />
-					<br />
-					<CardActions>
-						<Button
-							expand={expanded ? `${expanded}` : undefined}
-							onClick={handleExpandClick}
-							aria-expanded={expanded}
-							aria-label="show more"
-							size="medium"
-							variant="outlined"
-						>
-							{expanded ? 'Read Less' : 'Read More'}
-						</Button>
+					<Button
+						onClick={() => props.setDescription(null)}
+						size="medium"
+						variant="outlined"
+						sx={{ m: 1 }}
+					>
+						Done
+					</Button>
+					<Button
+						expand={props.expanded ? 'true' : undefined}
+						onClick={handleExpandClick}
+						aria-expanded={props.expanded}
+						aria-label="show more"
+						size="medium"
+						variant="outlined"
+						sx={{ m: 1 }}
+					>
+						{props.expanded ? 'Read Less' : 'Read More'}
+					</Button>
+				</Container>
+			</React.Fragment>
+		)
+	} else {
+		return (
+			<React.Fragment>
+				<CssBaseline />
+				<Container maxWidth="sm" sx={{ px: 0, py: 4 }}>
+					<Typography variant="h4" sx={{ pt: 2, pb: 4 }}>
+						{props.description.positionName}
+					</Typography>
+					<Typography variant="body1" sx={{ pb: 2 }}>
+						{props.description.positionDescription}
+					</Typography>
+					<CardActions sx={{ display: 'flex', justifyContent: 'center' }}>
 						<Button
 							onClick={() => props.setDescription(null)}
 							size="medium"
@@ -65,29 +88,6 @@ const Description = (props) => {
 							Done
 						</Button>
 					</CardActions>
-				</Container>
-			</React.Fragment>
-		)
-	} else {
-		return (
-			<React.Fragment>
-				<CssBaseline />
-				<Container maxWidth="sm">
-					<br />
-					<hr style={{ width: '60%' }} />
-					<Typography variant="h4">{props.description.positionName}</Typography>
-					<Typography variant="p" gutterBottom>
-						{props.description.positionDescription}
-					</Typography>
-					<hr style={{ width: '60%' }} />
-					<br />
-					<Button
-						onClick={() => props.setDescription(null)}
-						size="medium"
-						variant="outlined"
-					>
-						Done
-					</Button>
 				</Container>
 			</React.Fragment>
 		)

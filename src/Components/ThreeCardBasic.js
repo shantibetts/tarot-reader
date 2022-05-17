@@ -16,6 +16,7 @@ const ThreeCardBasic = (props) => {
 	const [threeCards, setThreeCards] = useState(readingConfigs()[0])
 	const [description, setDescription] = useState(null)
 	const [shuffledCards, setShuffledCards] = useState([])
+	const [expanded, setExpanded] = useState(false)
 
 	const shuffleCards = (cards) => {
 		let newShuffledCards = [...cards]
@@ -54,6 +55,7 @@ const ThreeCardBasic = (props) => {
 
 	const handleDescription = (card) => {
 		setDescription(card)
+		setExpanded(false)
 	}
 
 	const cardsDisplay = threeCards.reading.map((card) => (
@@ -70,7 +72,12 @@ const ThreeCardBasic = (props) => {
 	let descriptionDisplay = ''
 	if (description) {
 		descriptionDisplay = (
-			<Description description={description} setDescription={setDescription} />
+			<Description
+				description={description}
+				setDescription={setDescription}
+				expanded={expanded}
+				setExpanded={setExpanded}
+			/>
 		)
 	}
 
@@ -78,24 +85,27 @@ const ThreeCardBasic = (props) => {
 		<React.Fragment>
 			<CssBaseline />
 			<Container maxWidth="sm">
-				<br />
-				<Grid container spacing={2}>
+				<Grid container spacing={2} sx={{ my: 4 }}>
 					{cardsDisplay}
 				</Grid>
-				<br />
-				<Container sx={{ display: 'flex', justifyContent: 'space-around' }}>
-					<Button
-						onClick={handleDeal}
-						disabled={threeCards.index === 3 ? true : false}
-						size="medium"
-						variant="outlined"
-					>
-						Deal
-					</Button>
-					<Button onClick={handleNewReading} size="medium" variant="outlined">
-						New Reading
-					</Button>
-				</Container>
+
+				<Button
+					onClick={handleDeal}
+					disabled={threeCards.index === 3 ? true : false}
+					size="medium"
+					variant="outlined"
+					sx={{ m: 1 }}
+				>
+					Deal
+				</Button>
+				<Button
+					onClick={handleNewReading}
+					size="medium"
+					variant="outlined"
+					sx={{ m: 1 }}
+				>
+					New Reading
+				</Button>
 
 				{descriptionDisplay}
 			</Container>

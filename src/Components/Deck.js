@@ -6,6 +6,7 @@ import Button from '@mui/material/Button'
 import CardActions from '@mui/material/CardActions'
 import ImageList from '@mui/material/ImageList'
 import { Link as RouterLink } from 'react-router-dom'
+import Box from '@mui/material/Box'
 
 const Deck = (props) => {
 	const imgList = props.cardPreviews.map((item) => {
@@ -31,6 +32,9 @@ const Deck = (props) => {
 					size="medium"
 					variant="outlined"
 					disabled={true}
+					sx={{
+						m: 1
+					}}
 				>
 					{link.name}
 				</Button>
@@ -43,6 +47,9 @@ const Deck = (props) => {
 					href={link.url}
 					size="medium"
 					variant="outlined"
+					sx={{
+						m: 1
+					}}
 				>
 					{link.name}
 				</Button>
@@ -51,13 +58,14 @@ const Deck = (props) => {
 	})
 
 	return (
-		<Card sx={{ minWidth: 275 }}>
-			<br />
-			<Typography variant="h5" gutterBottom>
+		<Card sx={{ minWidth: 275, p: 1 }}>
+			<Typography variant="h5" sx={{ p: 2 }}>
 				{props.name}
 			</Typography>
 			<CardContent
 				sx={{
+					p: 1,
+					m: 1,
 					display: 'flex',
 					flexDirection: 'column',
 					justifyContent: 'center',
@@ -69,22 +77,25 @@ const Deck = (props) => {
 						display: 'grid',
 						gridTemplateColumns: '1fr 1fr',
 						justifyContent: 'center',
-						alignContent: 'center'
+						alignContent: 'center',
+						m: 1
 					}}
 					cols={2}
 					rowHeight="auto"
 				>
 					{imgList}
 				</ImageList>
-
-				<br />
-				<Typography sx={{ width: '80%' }} gutterBottom>
-					{props.description}
-				</Typography>
-				<br />
-				<CardActions>{linkList}</CardActions>
+				<Typography sx={{ p: 1, mt: 1 }}>{props.description}</Typography>
+				<CardActions>
+					<Box
+						sx={{
+							p: 1
+						}}
+					>
+						{linkList}
+					</Box>
+				</CardActions>
 			</CardContent>
-			<br />
 		</Card>
 	)
 }
