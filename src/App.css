@@ -1,3 +1,20 @@
 .App {
 	text-align: center;
 }
+.center {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.MuiCardMedia-img {
+	background-position: center;
+	background-size: stretch;
+	background-color: aquamarine;
+}
+.MuiCardActionArea-root {
+	height: 100%;
+}
+.tarotCard {
+	border-radius: 8px;
+}

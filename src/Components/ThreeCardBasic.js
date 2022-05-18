@@ -1,7 +1,4 @@
-import Card from '@mui/material/Card'
-import CardMedia from '@mui/material/CardMedia'
 import { useState, useEffect } from 'react'
-import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid'
 import CssBaseline from '@mui/material/CssBaseline'
@@ -9,8 +6,10 @@ import * as React from 'react'
 import TarotCard from './TarotCard'
 import Description from './Description'
 import Button from '@mui/material/Button'
-import ToggleButton from '@mui/material/ToggleButton'
 import readingConfigs from '../readingConfigs'
+import Deal from './Deal'
+import { useTheme } from '@mui/material/styles'
+import useMediaQuery from '@mui/material/useMediaQuery'
 
 const ThreeCardBasic = (props) => {
 	const [threeCards, setThreeCards] = useState(readingConfigs()[0])
@@ -81,36 +80,71 @@ const ThreeCardBasic = (props) => {
 		)
 	}
 
-	return (
-		<React.Fragment>
-			<CssBaseline />
-			<Container maxWidth="xs">
-				<Grid container spacing={2} sx={{ my: 4 }}>
-					{cardsDisplay}
+	if (useMediaQuery('(min-width:900px)')) {
+		return (
+			<React.Fragment>
+				<CssBaseline />
+				<Grid container spacing={4} sx={{ my: 4, pr: 4, pl: 2 }}>
+					<Grid item container xs={3} sx={{ justifyContent: 'center' }}>
+						<Deal
+							handleDeal={handleDeal}
+							deck={props.deck}
+							threeCards={threeCards}
+						/>
+						<Button
+							onClick={handleNewReading}
+							size="medium"
+							variant="outlined"
+							sx={{ m: 1 }}
+						>
+							New Reading
+						</Button>
+					</Grid>
+					<Grid item xs={9}>
+						<Container>
+							<Grid container spacing={2}>
+								{cardsDisplay}
+							</Grid>
+						</Container>
+					</Grid>
+					<Grid item container spacing={2} xs={12}>
+						{descriptionDisplay}
+					</Grid>
 				</Grid>
-
-				<Button
-					onClick={handleDeal}
-					disabled={threeCards.index === 3 ? true : false}
-					size="medium"
-					variant="outlined"
-					sx={{ m: 1 }}
-				>
-					Deal
-				</Button>
-				<Button
-					onClick={handleNewReading}
-					size="medium"
-					variant="outlined"
-					sx={{ m: 1 }}
-				>
-					New Reading
-				</Button>
-
-				{descriptionDisplay}
-			</Container>
-		</React.Fragment>
-	)
+			</React.Fragment>
+		)
+	} else {
+		return (
+			<React.Fragment>
+				<CssBaseline />
+				<Container>
+					<Container maxWidth="sm">
+						<Grid container spacing={2} sx={{ my: 4 }}>
+							{cardsDisplay}
+						</Grid>
+					</Container>
+					<Button
+						onClick={handleDeal}
+						disabled={threeCards.index === 3 ? true : false}
+						size="medium"
+						variant="outlined"
+						sx={{ m: 1 }}
+					>
+						Deal
+					</Button>
+					<Button
+						onClick={handleNewReading}
+						size="medium"
+						variant="outlined"
+						sx={{ m: 1 }}
+					>
+						New Reading
+					</Button>
+					<Container maxWidth="sm">{descriptionDisplay}</Container>
+				</Container>
+			</React.Fragment>
+		)
+	}
 }
 
 export default ThreeCardBasic

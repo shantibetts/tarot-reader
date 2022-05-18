@@ -21,7 +21,7 @@ const Description = (props) => {
 		return (
 			<React.Fragment>
 				<CssBaseline />
-				<Container maxWidth="sm" sx={{ px: 0, py: 4 }}>
+				<Container maxWidth="md" sx={{ px: 0, py: 4 }}>
 					<Typography variant="h4" sx={{ pt: 2 }}>
 						{props.description.positionName}
 					</Typography>

@@ -1,0 +1,23 @@
+.tarotCard {
+	width: 25vw;
+	height: auto;
+}
+
+@media only screen and (min-width: 600px) {
+	.tarotCard {
+		width: 20vw;
+		height: auto;
+	}
+}
+/* @media only screen and (min-width: 900px) {
+	.tarotCard {
+		width: 242px;
+		height: 420px;
+	}
+}
+@media only screen and (min-width: 1200px) {
+	.tarotCard {
+		width: 322.7px;
+		height: 560px;
+	}
+} */
