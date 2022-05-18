@@ -6,36 +6,23 @@ import emptyCard from '../Images/emptyCard.png'
 import Button from '@mui/material/Button'
 
 const TarotCard = (props) => {
+	const cardID = 'card' + props.index
 	if (props.card.name !== 'emptyCard') {
 		return (
-			<Grid item xs={props.span}>
-				<Button
-					onClick={() => props.handleDescription(props.card)}
-					id="noPadding"
-				>
-					<img
-						className="tarotCard"
-						src={props.card.url}
-						alt={props.card.name}
-					/>
-				</Button>
-			</Grid>
+			<Button onClick={() => props.handleDescription(props.card)} id={cardID}>
+				<img className="tarotCard" src={props.card.url} alt={props.card.name} />
+			</Button>
 		)
 	} else {
 		return (
-			<Grid item xs={props.span}>
-				<Button
-					onClick={() => props.handleDescription(props.card)}
-					id="noPadding"
-				>
-					<img
-						className="tarotCard"
-						src={emptyCard}
-						alt={props.card.name}
-						style={{ border: '1px solid black' }}
-					/>
-				</Button>
-			</Grid>
+			<Button onClick={() => props.handleDescription(props.card)} id={cardID}>
+				<img
+					className="tarotCard"
+					src={emptyCard}
+					alt={props.card.name}
+					style={{ border: '1px solid black' }}
+				/>
+			</Button>
 		)
 	}
 }

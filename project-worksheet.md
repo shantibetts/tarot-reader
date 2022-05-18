@@ -83,8 +83,8 @@ I want to create an interactive app that will do simple, and then not so simple 
 | Display Cards + Descriptions            |    5     |      2hr       |     3hr     |
 | Nav Menu                                |    4     |      2hr       |     1hr     |
 | Previews of decks + readings for Home   |    4     |      2hr       |     3hr     |
-| Dynamic Styling                         |    3     |      6hr       |     3hr     |
-| Total                                   |          |     15hrs      |     hr      |
+| Dynamic Styling                         |    3     |      6hr       |    12hr     |
+| Total                                   |          |     15hrs      |    21hrs    |
 
 #### PostMVP
 

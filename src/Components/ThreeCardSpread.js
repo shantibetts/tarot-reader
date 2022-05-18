@@ -10,45 +10,37 @@ import readingConfigs from '../readingConfigs'
 import Deal from './Deal'
 import { useTheme } from '@mui/material/styles'
 import useMediaQuery from '@mui/material/useMediaQuery'
+import ShuffleCards from './ShuffleCards'
 
-const ThreeCardBasic = (props) => {
-	const [threeCards, setThreeCards] = useState(readingConfigs()[0])
+const ThreeCardSpread = (props) => {
+	const [readingCards, setReadingCards] = useState(readingConfigs()[0])
 	const [description, setDescription] = useState(null)
 	const [shuffledCards, setShuffledCards] = useState([])
 	const [expanded, setExpanded] = useState(false)
 
-	const shuffleCards = (cards) => {
-		let newShuffledCards = [...cards]
-		newShuffledCards = newShuffledCards
-			.map((card) => ({ card: card, random: Math.random() }))
-			.sort((a, b) => a.random - b.random)
-			.map(({ card }) => card)
-		return newShuffledCards
-	}
-
 	useEffect(() => {
-		const newShuffledCards = shuffleCards(props.allCards)
+		const newShuffledCards = ShuffleCards(props.allCards)
 		setShuffledCards(newShuffledCards)
 	}, [props.allCards])
 
 	const handleDeal = () => {
 		const newShuffledCards = [...shuffledCards]
 		const newCard = newShuffledCards.shift()
-		let newThreeCards = { ...threeCards }
+		let newReadingCards = { ...readingCards }
 		newCard.positionName =
-			newThreeCards.reading[newThreeCards.index].positionName
+			newReadingCards.reading[newReadingCards.index].positionName
 		newCard.positionDescription =
-			newThreeCards.reading[newThreeCards.index].positionDescription
-		newThreeCards.reading.splice(newThreeCards.index, 1, newCard)
-		newThreeCards.index++
+			newReadingCards.reading[newReadingCards.index].positionDescription
+		newReadingCards.reading.splice(newReadingCards.index, 1, newCard)
+		newReadingCards.index++
 		setShuffledCards(newShuffledCards)
-		setThreeCards(newThreeCards)
+		setReadingCards(newReadingCards)
 	}
 
 	const handleNewReading = () => {
-		const newShuffledCards = shuffleCards(props.allCards)
+		const newShuffledCards = ShuffleCards(props.allCards)
 		setShuffledCards(newShuffledCards)
-		setThreeCards(readingConfigs()[0])
+		setReadingCards(readingConfigs()[0])
 		setDescription(null)
 	}
 
@@ -57,10 +49,11 @@ const ThreeCardBasic = (props) => {
 		setExpanded(false)
 	}
 
-	const cardsDisplay = threeCards.reading.map((card) => (
+	const cardsDisplay = readingCards.reading.map((card, i) => (
 		<TarotCard
 			key={card.name_short}
 			card={card}
+			index={i}
 			span={4}
 			width={88.7}
 			height={154}
@@ -90,7 +83,7 @@ const ThreeCardBasic = (props) => {
 							<Deal
 								handleDeal={handleDeal}
 								deck={props.deck}
-								threeCards={threeCards}
+								readingCards={readingCards}
 							/>
 							<Button
 								onClick={handleNewReading}
@@ -127,7 +120,9 @@ const ThreeCardBasic = (props) => {
 					</Container>
 					<Button
 						onClick={handleDeal}
-						disabled={threeCards.index === 3 ? true : false}
+						disabled={
+							readingCards.index === readingCards.indexMax ? true : false
+						}
 						size="medium"
 						variant="outlined"
 						sx={{ m: 1 }}
@@ -149,4 +144,4 @@ const ThreeCardBasic = (props) => {
 	}
 }
 
-export default ThreeCardBasic
+export default ThreeCardSpread

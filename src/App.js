@@ -3,7 +3,8 @@ import { useState, useEffect } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
 import Home from './Components/Home'
 import DeckList from './Components/DeckList'
-import ThreeCardBasic from './Components/ThreeCardBasic'
+import ThreeCardSpread from './Components/ThreeCardSpread'
+import FiveCardSpread from './Components/FiveCardSpread'
 import NavBar from './Components/NavBar'
 import About from './Components/About'
 import tarotDecks from './tarotDecks'
@@ -32,8 +33,12 @@ function App() {
 				<Route path="/" element={<Home />} />
 				<Route path="/decks" element={<DeckList />} />
 				<Route
-					path="/threeCardBasic"
-					element={<ThreeCardBasic allCards={allCards} deck={deck} />}
+					path="/threeCardSpread"
+					element={<ThreeCardSpread allCards={allCards} deck={deck} />}
+				/>
+				<Route
+					path="/fiveCardSpread"
+					element={<FiveCardSpread allCards={allCards} deck={deck} />}
 				/>
 				<Route path="/about" element={<About />} />
 			</Routes>

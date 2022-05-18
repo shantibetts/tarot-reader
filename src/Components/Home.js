@@ -29,7 +29,7 @@ const Home = () => {
 		}
 	)
 	const readingList = readingConfigs().map(
-		({ name, description, imageUrl, imageAlt }) => {
+		({ name, path, description, imageUrl, imageAlt }) => {
 			return (
 				<Card key={name} className="displayCard" sx={{ p: 1, my: 4 }}>
 					<CardContent>
@@ -46,7 +46,7 @@ const Home = () => {
 							size="medium"
 							variant="outlined"
 							component={RouterLink}
-							to="/threecardbasic"
+							to={path}
 							sx={{ my: 2 }}
 						>
 							Go to Reading

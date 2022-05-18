@@ -55,9 +55,16 @@ const NavBar = () => {
 						<MenuItem
 							onClick={handleClose}
 							component={RouterLink}
-							to="/threecardbasic"
+							to="/threecardspread"
 						>
-							Three Card Basic Reading
+							Three Card Spread
+						</MenuItem>
+						<MenuItem
+							onClick={handleClose}
+							component={RouterLink}
+							to="/fivecardspread"
+						>
+							Five Card Spread
 						</MenuItem>
 						<MenuItem onClick={handleClose} component={RouterLink} to="/about">
 							About

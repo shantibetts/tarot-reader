@@ -44,7 +44,7 @@ const Description = (props) => {
 							unmountOnExit
 							sx={{ p: 0 }}
 						>
-							<Divider variant="middle" sx={{ py: 2 }} />
+							<Divider variant="middle" />
 							<Typography variant="body1" sx={{ py: 2 }}>
 								{props.description.desc}
 							</Typography>

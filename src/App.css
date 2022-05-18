@@ -8,9 +8,11 @@
 	align-items: center;
 }
 .tarotCard {
-	width: 25vw;
+	/* width: 25vw; */
+	width: 100%;
+	height: auto;
 	max-width: 300px;
-	height: 44vw;
+	/* height: 44vw; */
 	max-height: 534px;
 	border-radius: 8px;
 }
@@ -24,4 +26,28 @@
 .readingPreview {
 	width: 100%;
 	height: auto;
+}
+#fiveCardSpread {
+	display: grid;
+	grid:
+		[row1-start] 'card0 . card1' auto [row1-end]
+		[row2-start] '. card4 .' auto [row2-end]
+		[row3-start] 'card2 . card3' auto [row3-end]
+		/ 1fr 1fr 1fr;
+	max-height: 80%;
+}
+#card0 {
+	grid-area: card0;
+}
+#card1 {
+	grid-area: card1;
+}
+#card2 {
+	grid-area: card2;
+}
+#card3 {
+	grid-area: card3;
+}
+#card4 {
+	grid-area: card4;
 }

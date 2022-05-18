@@ -1,13 +1,12 @@
 import Button from '@mui/material/Button'
-import Card from '@mui/material/Card'
-import CardActionArea from '@mui/material/CardActionArea'
-import CardMedia from '@mui/material/CardMedia'
 
 const Deal = (props) => {
 	return (
 		<Button
 			onClick={props.handleDeal}
-			disabled={props.threeCards.index === 3 ? true : false}
+			disabled={
+				props.readingCards.index === props.readingCards.indexMax ? true : false
+			}
 		>
 			<img
 				className="tarotCard"
