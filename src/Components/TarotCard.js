@@ -9,7 +9,10 @@ const TarotCard = (props) => {
 	if (props.card.name !== 'emptyCard') {
 		return (
 			<Grid item xs={props.span}>
-				<Button onClick={() => props.handleDescription(props.card)}>
+				<Button
+					onClick={() => props.handleDescription(props.card)}
+					id="noPadding"
+				>
 					<img
 						className="tarotCard"
 						src={props.card.url}
@@ -21,7 +24,10 @@ const TarotCard = (props) => {
 	} else {
 		return (
 			<Grid item xs={props.span}>
-				<Button onClick={() => props.handleDescription(props.card)}>
+				<Button
+					onClick={() => props.handleDescription(props.card)}
+					id="noPadding"
+				>
 					<img
 						className="tarotCard"
 						src={emptyCard}

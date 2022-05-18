@@ -86,7 +86,7 @@ const ThreeCardBasic = (props) => {
 				<CssBaseline />
 				<Grid container spacing={4} sx={{ my: 4, pr: 4, pl: 4 }}>
 					<Grid item container xs={3}>
-						<Container maxWidth="xs" sx={{ padding: 0 }} id="noPadding">
+						<Container maxWidth="xs" id="noPadding">
 							<Deal
 								handleDeal={handleDeal}
 								deck={props.deck}

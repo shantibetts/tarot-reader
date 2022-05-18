@@ -14,3 +14,9 @@
 	max-height: 534px;
 	border-radius: 8px;
 }
+.displayCard {
+	max-width: 500px;
+}
+#noPadding {
+	padding: 0;
+}
