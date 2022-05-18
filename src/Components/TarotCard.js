@@ -22,7 +22,12 @@ const TarotCard = (props) => {
 		return (
 			<Grid item xs={props.span}>
 				<Button onClick={() => props.handleDescription(props.card)}>
-					<img className="tarotCard" src={emptyCard} alt={props.card.name} />
+					<img
+						className="tarotCard"
+						src={emptyCard}
+						alt={props.card.name}
+						style={{ border: '1px solid black' }}
+					/>
 				</Button>
 			</Grid>
 		)

@@ -31,7 +31,7 @@ const Home = () => {
 	const readingList = readingConfigs().map(
 		({ name, description, imageUrl, imageAlt }) => {
 			return (
-				<Card key={name}>
+				<Card key={name} maxWidth="xs">
 					<br />
 					<Typography gutterBottom variant="h5" component="div">
 						{name}

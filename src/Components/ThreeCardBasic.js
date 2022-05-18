@@ -84,21 +84,23 @@ const ThreeCardBasic = (props) => {
 		return (
 			<React.Fragment>
 				<CssBaseline />
-				<Grid container spacing={4} sx={{ my: 4, pr: 4, pl: 2 }}>
-					<Grid item container xs={3} sx={{ justifyContent: 'center' }}>
-						<Deal
-							handleDeal={handleDeal}
-							deck={props.deck}
-							threeCards={threeCards}
-						/>
-						<Button
-							onClick={handleNewReading}
-							size="medium"
-							variant="outlined"
-							sx={{ m: 1 }}
-						>
-							New Reading
-						</Button>
+				<Grid container spacing={4} sx={{ my: 4, pr: 4, pl: 4 }}>
+					<Grid item container xs={3}>
+						<Container maxWidth="xs" sx={{ padding: 0 }} id="noPadding">
+							<Deal
+								handleDeal={handleDeal}
+								deck={props.deck}
+								threeCards={threeCards}
+							/>
+							<Button
+								onClick={handleNewReading}
+								size="medium"
+								variant="outlined"
+								sx={{ m: 1 }}
+							>
+								New Reading
+							</Button>
+						</Container>
 					</Grid>
 					<Grid item xs={9}>
 						<Container>

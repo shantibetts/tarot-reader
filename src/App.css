@@ -7,14 +7,10 @@
 	justify-content: center;
 	align-items: center;
 }
-.MuiCardMedia-img {
-	background-position: center;
-	background-size: stretch;
-	background-color: aquamarine;
-}
-.MuiCardActionArea-root {
-	height: 100%;
-}
 .tarotCard {
+	width: 25vw;
+	max-width: 300px;
+	height: 44vw;
+	max-height: 534px;
 	border-radius: 8px;
 }

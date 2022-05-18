@@ -21,51 +21,56 @@ const Description = (props) => {
 		return (
 			<React.Fragment>
 				<CssBaseline />
-				<Container maxWidth="md" sx={{ px: 0, py: 4 }}>
-					<Typography variant="h4" sx={{ pt: 2 }}>
-						{props.description.positionName}
-					</Typography>
-					<Typography variant="body1" sx={{ py: 4 }}>
-						{props.description.positionDescription}
-					</Typography>
-					<Divider variant="middle" />
-					<Typography variant="h4" sx={{ py: 4 }}>
-						{props.description.name}
-					</Typography>
-					<Typography variant="body1" sx={{ pb: 2 }}>
-						{props.description.meaning_up}
-					</Typography>
-					<Collapse
-						in={props.expanded}
-						timeout="auto"
-						unmountOnExit
-						sx={{ p: 0 }}
-					>
-						<Divider variant="middle" sx={{ py: 2 }} />
-						<Typography variant="body1" sx={{ py: 2 }}>
-							{props.description.desc}
+				<Grid container spacing={2} sx={{ px: 0, py: 4 }}>
+					<Grid item xs={12} md={6}>
+						<Typography variant="h4" sx={{ pt: 2 }}>
+							{props.description.positionName}
 						</Typography>
-					</Collapse>
-					<Button
-						expand={props.expanded ? 'true' : undefined}
-						onClick={handleExpandClick}
-						aria-expanded={props.expanded}
-						aria-label="show more"
-						size="small"
-						sx={{ mb: 4 }}
-					>
-						{props.expanded ? 'Read Less' : 'Read More'}
-					</Button>
-					<br />
-					<Button
-						onClick={() => props.setDescription(null)}
-						size="medium"
-						variant="outlined"
-						sx={{ m: 1 }}
-					>
-						Done
-					</Button>
-				</Container>
+						<Typography variant="body1" sx={{ py: 4 }}>
+							{props.description.positionDescription}
+						</Typography>
+						<Divider variant="middle" className="smallDivider" />
+					</Grid>
+					<Grid item xs={12} md={6}>
+						<Typography variant="h4" sx={{ py: 2 }}>
+							{props.description.name}
+						</Typography>
+						<Typography variant="body1" sx={{ py: 2 }}>
+							{props.description.meaning_up}
+						</Typography>
+						<Collapse
+							in={props.expanded}
+							timeout="auto"
+							unmountOnExit
+							sx={{ p: 0 }}
+						>
+							<Divider variant="middle" sx={{ py: 2 }} />
+							<Typography variant="body1" sx={{ py: 2 }}>
+								{props.description.desc}
+							</Typography>
+						</Collapse>
+						<Button
+							expand={props.expanded ? 'true' : undefined}
+							onClick={handleExpandClick}
+							aria-expanded={props.expanded}
+							aria-label="show more"
+							size="small"
+							sx={{ mb: 4 }}
+						>
+							{props.expanded ? 'Read Less' : 'Read More'}
+						</Button>
+					</Grid>
+					<Grid item xs={12}>
+						<Button
+							onClick={() => props.setDescription(null)}
+							size="medium"
+							variant="outlined"
+							sx={{ m: 1 }}
+						>
+							Done
+						</Button>
+					</Grid>
+				</Grid>
 			</React.Fragment>
 		)
 	} else {
