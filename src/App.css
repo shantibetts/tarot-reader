@@ -15,8 +15,13 @@
 	border-radius: 8px;
 }
 .displayCard {
+	min-width: 275px;
 	max-width: 500px;
 }
 #noPadding {
 	padding: 0;
+}
+.readingPreview {
+	width: 100%;
+	height: auto;
 }

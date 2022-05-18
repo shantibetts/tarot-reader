@@ -26,7 +26,7 @@ const readingConfigs = () => {
 			],
 			index: 0,
 			description:
-				'a simple reading, where the three cards represent the past, present and future',
+				'A simple reading, where the three cards represent the past, present and future',
 			imageUrl: ThreeCardBasic,
 			imageAlt: 'Three cards in a row'
 		}

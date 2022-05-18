@@ -58,10 +58,7 @@ const Deck = (props) => {
 	})
 
 	return (
-		<Card sx={{ minWidth: 275, p: 1 }}>
-			<Typography variant="h5" sx={{ p: 2 }}>
-				{props.name}
-			</Typography>
+		<Card className="displayCard" sx={{ p: 1, my: 4 }}>
 			<CardContent
 				sx={{
 					p: 1,
@@ -72,6 +69,9 @@ const Deck = (props) => {
 					alignItems: 'center'
 				}}
 			>
+				<Typography variant="h5" sx={{ pb: 2 }}>
+					{props.name}
+				</Typography>
 				<ImageList
 					sx={{
 						display: 'grid',
@@ -85,16 +85,8 @@ const Deck = (props) => {
 				>
 					{imgList}
 				</ImageList>
-				<Typography sx={{ p: 1, mt: 1 }}>{props.description}</Typography>
-				<CardActions>
-					<Box
-						sx={{
-							p: 1
-						}}
-					>
-						{linkList}
-					</Box>
-				</CardActions>
+				<Typography sx={{ p: 2 }}>{props.description}</Typography>
+				<CardActions>{linkList}</CardActions>
 			</CardContent>
 		</Card>
 	)

@@ -7,9 +7,9 @@ import tarotDecks from '../tarotDecks'
 import Title from './Title'
 import readingConfigs from '../readingConfigs'
 import Typography from '@mui/material/Typography'
-import CardMedia from '@mui/material/CardMedia'
-import { Link as RouterLink } from 'react-router-dom'
 import Container from '@mui/material/Container'
+import { Link as RouterLink } from 'react-router-dom'
+import Grid from '@mui/material/Grid'
 
 const Home = () => {
 	const deckList = tarotDecks.map(
@@ -31,35 +31,27 @@ const Home = () => {
 	const readingList = readingConfigs().map(
 		({ name, description, imageUrl, imageAlt }) => {
 			return (
-				<Card key={name} className="displayCard">
-					<br />
-					<Typography gutterBottom variant="h5" component="div">
-						{name}
-					</Typography>
-					<br />
-					<CardMedia
-						component="img"
-						height="140"
-						image={imageUrl}
-						alt={imageAlt}
-					/>
+				<Card key={name} className="displayCard" sx={{ p: 1, my: 4 }}>
 					<CardContent>
-						<Typography variant="body">{description}</Typography>
+						<Typography gutterBottom variant="h5" sx={{ pt: 2 }}>
+							{name}
+						</Typography>
+						<img src={imageUrl} alt={imageAlt} className="readingPreview" />
+						<Typography variant="body" sx={{ px: 2 }}>
+							{description}
+						</Typography>
 					</CardContent>
-					<br />
-					<CardActions>
-						<Container>
-							<Button
-								size="medium"
-								variant="outlined"
-								component={RouterLink}
-								to="/threecardbasic"
-							>
-								Go to Reading
-							</Button>
-						</Container>
+					<CardActions className="center">
+						<Button
+							size="medium"
+							variant="outlined"
+							component={RouterLink}
+							to="/threecardbasic"
+							sx={{ my: 2 }}
+						>
+							Go to Reading
+						</Button>
 					</CardActions>
-					<br />
 				</Card>
 			)
 		}
@@ -70,9 +62,16 @@ const Home = () => {
 				title="Welcome"
 				text="Choose a deck and a reading layout to get started"
 			/>
-			{deckList}
-			<br />
-			{readingList}
+			<Container>
+				<Grid container spacing={2}>
+					<Grid item xs={12} md={6}>
+						{deckList}
+					</Grid>
+					<Grid item xs={12} md={6}>
+						{readingList}
+					</Grid>
+				</Grid>
+			</Container>
 		</div>
 	)
 }
