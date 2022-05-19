@@ -1,11 +1,2 @@
-@media only screen and (min-width: 600px) {
-	.tarotCard {
-		width: 20vw;
-		height: 35vw;
-	}
-}
-@media only screen and (min-width: 900px) {
-	.smallDivider {
-		display: none;
-	}
-}
+
+

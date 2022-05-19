@@ -8,11 +8,9 @@
 	align-items: center;
 }
 .tarotCard {
-	/* width: 25vw; */
 	width: 100%;
 	height: auto;
 	max-width: 300px;
-	/* height: 44vw; */
 	max-height: 534px;
 	border-radius: 8px;
 }
@@ -27,14 +25,42 @@
 	width: 100%;
 	height: auto;
 }
+#threeCardSpread {
+	display: grid;
+	grid:
+		[row1-start] 'deal . .' auto [row1-end]
+		[row2-start] 'card0 card1 card2' auto [row2-end]
+		[row3-start] 'new new new' auto [row3-end]
+		[row4-start] 'desc desc desc' auto [row4-end]
+		/ fit-content(150px) fit-content(150px) fit-content(150px);
+	gap: 3vmin;
+	padding: 3vmin;
+}
 #fiveCardSpread {
 	display: grid;
 	grid:
 		[row1-start] 'card0 . card1' auto [row1-end]
-		[row2-start] '. card4 .' auto [row2-end]
+		[row2-start] 'deal card4 .' auto [row2-end]
 		[row3-start] 'card2 . card3' auto [row3-end]
-		/ 1fr 1fr 1fr;
-	max-height: 80%;
+		[row4-start] 'new new new' auto [row4-end]
+		[row5-start] 'desc desc desc' auto [row5-end]
+		/ fit-content(150px) fit-content(150px) fit-content(150px);
+	gap: 3vmin;
+	padding: 3vmin;
+}
+#readingContainer {
+	padding: 0;
+	display: grid;
+	grid: auto auto;
+	justify-content: center;
+}
+#card0,
+#card1,
+#card2,
+#card3,
+#card4,
+#deal {
+	padding: 0;
 }
 #card0 {
 	grid-area: card0;
@@ -50,4 +76,36 @@
 }
 #card4 {
 	grid-area: card4;
+}
+#deal {
+	grid-area: deal;
+}
+#desc {
+	grid-area: desc;
+}
+#newReading {
+	grid-area: new;
+}
+
+@media only screen and (min-width: 900px) {
+	.smallDivider {
+		display: none;
+	}
+	#threeCardSpread {
+		grid:
+			[row1-start] 'deal . . desc' fit-content(265px) [row1-end]
+			[row2-start] 'card0 card1 card2 desc' fit-content(265px) [row2-end]
+			[row3-start] 'new new new desc' fit-content(36.5px) [row3-end]
+			[row4-start] '. . . desc' auto [row4-end]
+			/ fit-content(150px) fit-content(150px) fit-content(150px) 1fr;
+	}
+	#fiveCardSpread {
+		grid:
+			[row1-start] 'card0 . card1 desc' fit-content(265px) [row1-end]
+			[row2-start] 'deal card4 . desc' fit-content(265px) [row2-end]
+			[row3-start] 'card2 . card3 desc' fit-content(265px) [row3-end]
+			[row3-start] 'new new new desc' fit-content(36.5px) [row3-end]
+			[row4-start] '. . . desc' auto [row4-end]
+			/ fit-content(150px) fit-content(150px) fit-content(150px) 1fr;
+	}
 }

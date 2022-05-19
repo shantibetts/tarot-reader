@@ -73,75 +73,30 @@ const ThreeCardSpread = (props) => {
 		)
 	}
 
-	if (useMediaQuery('(min-width:900px)')) {
-		return (
-			<React.Fragment>
-				<CssBaseline />
-				<Grid container spacing={4} sx={{ my: 4, pr: 4, pl: 4 }}>
-					<Grid item container xs={3}>
-						<Container maxWidth="xs" id="noPadding">
-							<Deal
-								handleDeal={handleDeal}
-								deck={props.deck}
-								readingCards={readingCards}
-							/>
-							<Button
-								onClick={handleNewReading}
-								size="medium"
-								variant="outlined"
-								sx={{ m: 1 }}
-							>
-								New Reading
-							</Button>
-						</Container>
-					</Grid>
-					<Grid item xs={9}>
-						<Container>
-							<Grid container spacing={2}>
-								{cardsDisplay}
-							</Grid>
-						</Container>
-					</Grid>
-					<Grid item container spacing={2} xs={12}>
-						{descriptionDisplay}
-					</Grid>
-				</Grid>
-			</React.Fragment>
-		)
-	} else {
-		return (
-			<React.Fragment>
-				<CssBaseline />
-				<Container>
-					<Container maxWidth="sm">
-						<Grid container spacing={2} sx={{ my: 4 }}>
-							{cardsDisplay}
-						</Grid>
-					</Container>
-					<Button
-						onClick={handleDeal}
-						disabled={
-							readingCards.index === readingCards.indexMax ? true : false
-						}
-						size="medium"
-						variant="outlined"
-						sx={{ m: 1 }}
-					>
-						Deal
-					</Button>
-					<Button
-						onClick={handleNewReading}
-						size="medium"
-						variant="outlined"
-						sx={{ m: 1 }}
-					>
-						New Reading
-					</Button>
-					<Container maxWidth="sm">{descriptionDisplay}</Container>
-				</Container>
-			</React.Fragment>
-		)
-	}
+	return (
+		<React.Fragment>
+			<CssBaseline />
+			<Container id="threeCardSpread">
+				<Deal
+					handleDeal={handleDeal}
+					deck={props.deck}
+					readingCards={readingCards}
+					sx={{ transform: 'rotate(90deg)' }}
+				/>
+				{cardsDisplay}
+				<Button
+					onClick={handleNewReading}
+					size="medium"
+					variant="outlined"
+					sx={{ m: 1, maxWidth: 'fit-content', justifySelf: 'center' }}
+					id="newReading"
+				>
+					New Reading
+				</Button>
+				{descriptionDisplay}
+			</Container>
+		</React.Fragment>
+	)
 }
 
 export default ThreeCardSpread

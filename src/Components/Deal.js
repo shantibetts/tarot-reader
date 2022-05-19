@@ -7,6 +7,7 @@ const Deal = (props) => {
 			disabled={
 				props.readingCards.index === props.readingCards.indexMax ? true : false
 			}
+			id="deal"
 		>
 			<img
 				className="tarotCard"

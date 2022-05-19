@@ -73,69 +73,30 @@ const FiveCardSpread = (props) => {
 		)
 	}
 
-	if (useMediaQuery('(min-width:900px)')) {
-		return (
-			<React.Fragment>
-				<CssBaseline />
-				<Grid container spacing={4} sx={{ my: 4, pr: 4, pl: 4 }}>
-					<Grid item container xs={3}>
-						<Container maxWidth="xs" id="noPadding">
-							<Deal
-								handleDeal={handleDeal}
-								deck={props.deck}
-								readingCards={readingCards}
-							/>
-							<Button
-								onClick={handleNewReading}
-								size="medium"
-								variant="outlined"
-								sx={{ m: 1 }}
-							>
-								New Reading
-							</Button>
-						</Container>
-					</Grid>
-					<Grid item xs={9}>
-						<Container id="fiveCardSpread">{cardsDisplay}</Container>
-					</Grid>
-					<Grid item container spacing={2} xs={12}>
-						{descriptionDisplay}
-					</Grid>
-				</Grid>
-			</React.Fragment>
-		)
-	} else {
-		return (
-			<React.Fragment>
-				<CssBaseline />
-				<Container>
-					<Container maxWidth="sm">
-						<Container id="fiveCardSpread">{cardsDisplay}</Container>
-					</Container>
-					<Button
-						onClick={handleDeal}
-						disabled={
-							readingCards.index === readingCards.indexMax ? true : false
-						}
-						size="medium"
-						variant="outlined"
-						sx={{ m: 1 }}
-					>
-						Deal
-					</Button>
-					<Button
-						onClick={handleNewReading}
-						size="medium"
-						variant="outlined"
-						sx={{ m: 1 }}
-					>
-						New Reading
-					</Button>
-					<Container maxWidth="sm">{descriptionDisplay}</Container>
-				</Container>
-			</React.Fragment>
-		)
-	}
+	return (
+		<Container id="readingContainer">
+			<CssBaseline />
+			<Container id="fiveCardSpread">
+				<Deal
+					handleDeal={handleDeal}
+					deck={props.deck}
+					readingCards={readingCards}
+				/>
+				{cardsDisplay}
+
+				<Button
+					onClick={handleNewReading}
+					size="medium"
+					variant="outlined"
+					sx={{ m: 1, maxWidth: 'fit-content', justifySelf: 'center' }}
+					id="newReading"
+				>
+					New Reading
+				</Button>
+				{descriptionDisplay}
+			</Container>
+		</Container>
+	)
 }
 
 export default FiveCardSpread

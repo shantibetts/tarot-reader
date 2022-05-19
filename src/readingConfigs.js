@@ -41,7 +41,7 @@ const readingConfigs = () => {
 					name: 'emptyCard',
 					name_short: 'ec1',
 					positionName: 'The Situation',
-					positionDescription: `This card represents the qurant's situation, and can give insite into the hidden details of the situation.`
+					positionDescription: `This card represents the qurant's situation, and can give insight into the hidden details of the situation.`
 				},
 				{
 					name: 'emptyCard',
@@ -52,7 +52,7 @@ const readingConfigs = () => {
 				{
 					name: 'emptyCard',
 					name_short: 'ec3',
-					positionName: 'Challanges',
+					positionName: 'Challenges',
 					positionDescription: `This card represents the challenges the qurant will face due to the situation`
 				},
 				{
