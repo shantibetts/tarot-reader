@@ -1,15 +1,9 @@
-import Card from '@mui/material/Card'
-import CardMedia from '@mui/material/CardMedia'
-import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
-import Grid from '@mui/material/Grid'
 import CssBaseline from '@mui/material/CssBaseline'
 import * as React from 'react'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
-import CardActions from '@mui/material/CardActions'
 import Collapse from '@mui/material/Collapse'
-import CardContent from '@mui/material/CardContent'
 import Divider from '@mui/material/Divider'
 
 const Description = (props) => {
@@ -19,7 +13,7 @@ const Description = (props) => {
 
 	if (props.description.name !== 'emptyCard') {
 		return (
-			<Container maxWidth="sm" id="desc" sx={{ px: 0, py: 4 }}>
+			<Container maxWidth="md" id="desc" sx={{ px: 0, py: 4 }}>
 				<CssBaseline />
 				<Typography variant="h4" sx={{ pt: 2 }}>
 					{props.description.positionName}

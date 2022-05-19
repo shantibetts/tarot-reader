@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import Container from '@mui/material/Container'
-import Grid from '@mui/material/Grid'
 import CssBaseline from '@mui/material/CssBaseline'
 import * as React from 'react'
 import TarotCard from './TarotCard'
@@ -8,9 +7,7 @@ import Description from './Description'
 import Button from '@mui/material/Button'
 import readingConfigs from '../readingConfigs'
 import Deal from './Deal'
-import { useTheme } from '@mui/material/styles'
-import useMediaQuery from '@mui/material/useMediaQuery'
-import ShuffleCards from './ShuffleCards'
+import { shuffleCards, handleDeal, handleNewReading } from './Utils'
 
 const FiveCardSpread = (props) => {
 	const [readingCards, setReadingCards] = useState(readingConfigs()[1])
@@ -19,30 +16,9 @@ const FiveCardSpread = (props) => {
 	const [expanded, setExpanded] = useState(false)
 
 	useEffect(() => {
-		const newShuffledCards = ShuffleCards(props.allCards)
+		const newShuffledCards = shuffleCards(props.allCards)
 		setShuffledCards(newShuffledCards)
 	}, [props.allCards])
-
-	const handleDeal = () => {
-		const newShuffledCards = [...shuffledCards]
-		const newCard = newShuffledCards.shift()
-		let newReadingCards = { ...readingCards }
-		newCard.positionName =
-			newReadingCards.reading[newReadingCards.index].positionName
-		newCard.positionDescription =
-			newReadingCards.reading[newReadingCards.index].positionDescription
-		newReadingCards.reading.splice(newReadingCards.index, 1, newCard)
-		newReadingCards.index++
-		setShuffledCards(newShuffledCards)
-		setReadingCards(newReadingCards)
-	}
-
-	const handleNewReading = () => {
-		const newShuffledCards = ShuffleCards(props.allCards)
-		setShuffledCards(newShuffledCards)
-		setReadingCards(readingConfigs()[1])
-		setDescription(null)
-	}
 
 	const handleDescription = (card) => {
 		setDescription(card)
@@ -78,14 +54,29 @@ const FiveCardSpread = (props) => {
 			<CssBaseline />
 			<Container id="fiveCardSpread">
 				<Deal
-					handleDeal={handleDeal}
+					handleDeal={() =>
+						handleDeal(
+							shuffledCards,
+							readingCards,
+							setShuffledCards,
+							setReadingCards
+						)
+					}
 					deck={props.deck}
 					readingCards={readingCards}
 				/>
 				{cardsDisplay}
 
 				<Button
-					onClick={handleNewReading}
+					onClick={() =>
+						handleNewReading(
+							props.allCards,
+							setShuffledCards,
+							setReadingCards,
+							setDescription,
+							1
+						)
+					}
 					size="medium"
 					variant="outlined"
 					sx={{ m: 1, maxWidth: 'fit-content', justifySelf: 'center' }}
