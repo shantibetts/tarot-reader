@@ -24,10 +24,10 @@ const ThreeCardSpread = (props) => {
 		setShuffledCards(newShuffledCards)
 	}, [props.allCards])
 
-	const handleDescription = (card) => {
+	const handleDescription = (e, card) => {
 		setExpanded(false)
-		setDialogOpen(!desktop)
 		setDescription(card)
+		e.detail === 2 || !desktop ? setDialogOpen(true) : setDialogOpen(false)
 	}
 
 	const cardsDisplay = readingCards.reading.map((card, i) => (

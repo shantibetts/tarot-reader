@@ -8,7 +8,6 @@ import FiveCardSpread from './Components/FiveCardSpread'
 import NavBar from './Components/NavBar'
 import About from './Components/About'
 import tarotDecks from './tarotDecks'
-import './responsive.css'
 
 function App() {
 	const [allCards, setAllCards] = useState([])

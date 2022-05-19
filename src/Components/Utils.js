@@ -1,5 +1,4 @@
 import readingConfigs from '../readingConfigs'
-import tarotDecks from '../tarotDecks'
 
 const handleDeal = (
 	shuffledCards,

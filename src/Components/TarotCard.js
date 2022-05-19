@@ -2,7 +2,7 @@ import emptyCard from '../Images/emptyCard.png'
 import Button from '@mui/material/Button'
 
 const TarotCard = (props) => {
-	const handleDescription = () => props.handleDescription(props.card)
+	const handleDescription = (e) => props.handleDescription(e, props.card)
 
 	const cardID = 'card' + props.index
 	if (props.card.name !== 'emptyCard') {

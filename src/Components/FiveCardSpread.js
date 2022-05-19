@@ -17,16 +17,17 @@ const FiveCardSpread = (props) => {
 	const [shuffledCards, setShuffledCards] = useState([])
 	const [expanded, setExpanded] = useState(false)
 	const [dialogOpen, setDialogOpen] = useState(false)
+	let desktop = useMediaQuery('(min-width:600px)')
 
 	useEffect(() => {
 		const newShuffledCards = shuffleCards(props.allCards)
 		setShuffledCards(newShuffledCards)
 	}, [props.allCards])
 
-	const handleDescription = (card) => {
-		setDescription(card)
+	const handleDescription = (e, card) => {
 		setExpanded(false)
-		setDialogOpen(true)
+		setDescription(card)
+		e.detail === 2 || !desktop ? setDialogOpen(true) : setDialogOpen(false)
 	}
 
 	const cardsDisplay = readingCards.reading.map((card, i) => (
@@ -40,12 +41,11 @@ const FiveCardSpread = (props) => {
 	))
 
 	let descriptionDisplay = ''
-	let desktop = useMediaQuery('(min-width:600px)')
 	if (description && desktop && !dialogOpen) {
 		descriptionDisplay = (
 			<Description
 				description={description}
-				done={setDescription(null)}
+				done={() => setDescription(null)}
 				expanded={expanded}
 				setExpanded={setExpanded}
 			/>
@@ -53,7 +53,7 @@ const FiveCardSpread = (props) => {
 	}
 
 	return (
-		<Container id="readingContainer">
+		<React.Fragment>
 			<CssBaseline />
 			<Container id="fiveCardSpread">
 				<Deal
@@ -71,7 +71,6 @@ const FiveCardSpread = (props) => {
 					readingCards={readingCards}
 				/>
 				{cardsDisplay}
-
 				<Button
 					onClick={() =>
 						handleNewReading(
@@ -99,7 +98,7 @@ const FiveCardSpread = (props) => {
 					setExpanded={setExpanded}
 				/>
 			</Container>
-		</Container>
+		</React.Fragment>
 	)
 }
 

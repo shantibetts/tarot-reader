@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import Dialog from '@mui/material/Dialog'
 import * as React from 'react'
 import Description from './Description'
@@ -30,7 +30,6 @@ const CardDialog = (props) => {
 				aria-describedby="card-dialog-description"
 				ref={descriptionElementRef}
 				tabIndex={-1}
-				id="center"
 			>
 				<Description
 					description={props.description}

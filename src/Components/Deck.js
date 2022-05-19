@@ -5,8 +5,6 @@ import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import CardActions from '@mui/material/CardActions'
 import ImageList from '@mui/material/ImageList'
-import { Link as RouterLink } from 'react-router-dom'
-import Box from '@mui/material/Box'
 
 const Deck = (props) => {
 	const imgList = props.cardPreviews.map((item) => {

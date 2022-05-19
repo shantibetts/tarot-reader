@@ -1,12 +1,6 @@
 .App {
 	text-align: center;
 }
-.center {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-}
 .tarotCard {
 	width: 100%;
 	height: auto;
@@ -17,6 +11,9 @@
 .displayCard {
 	min-width: 275px;
 	max-width: 500px;
+	display: grid;
+	grid: auto auto;
+	gap: 8px;
 }
 #noPadding {
 	padding: 0;
@@ -47,15 +44,6 @@
 		/ fit-content(150px) fit-content(150px) fit-content(150px);
 	gap: 3vmin;
 	padding: 3vmin;
-}
-#readingContainer {
-	padding: 0;
-	display: grid;
-	grid: auto auto;
-	justify-content: center;
-}
-#cardDialog {
-	text-align: center;
 }
 #card0,
 #card1,

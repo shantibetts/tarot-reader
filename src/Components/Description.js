@@ -55,7 +55,7 @@ const Description = (props) => {
 	}
 	if (card) {
 		return (
-			<Container id="desc" sx={{ px: 1, py: 4 }}>
+			<Container id="desc" className="center" sx={{ px: 1, py: 4 }}>
 				<CssBaseline />
 				<Typography variant="h4" sx={{ pt: 2 }}>
 					{card.positionName}

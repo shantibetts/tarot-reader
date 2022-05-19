@@ -71,7 +71,7 @@ const readingConfigs = () => {
 			index: 0,
 			indexMax: 5,
 			description:
-				'A more complex reading, used to gain insite into a situation.',
+				'A more complex reading, used to gain insight into a situation.',
 			imageUrl: FiveCardSpread,
 			imageAlt: 'Four cards in a square around a central card'
 		}

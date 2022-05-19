@@ -1,4 +1,3 @@
-import Typography from '@mui/material/Typography'
 import Title from './Title'
 import { Link as RouterLink } from 'react-router-dom'
 import Button from '@mui/material/Button'

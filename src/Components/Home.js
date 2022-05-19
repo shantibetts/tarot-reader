@@ -1,7 +1,5 @@
 import Card from '@mui/material/Card'
-import CardContent from '@mui/material/CardMedia'
 import Button from '@mui/material/Button'
-import CardActions from '@mui/material/CardActions'
 import Deck from './Deck'
 import tarotDecks from '../tarotDecks'
 import Title from './Title'
@@ -31,27 +29,28 @@ const Home = () => {
 	const readingList = readingConfigs().map(
 		({ name, path, description, imageUrl, imageAlt }) => {
 			return (
-				<Card key={name} className="displayCard" sx={{ p: 1, my: 4 }}>
-					<CardContent>
-						<Typography gutterBottom variant="h5" sx={{ pt: 2 }}>
-							{name}
-						</Typography>
-						<img src={imageUrl} alt={imageAlt} className="readingPreview" />
-						<Typography variant="body" sx={{ px: 2 }}>
-							{description}
-						</Typography>
-					</CardContent>
-					<CardActions className="center">
-						<Button
-							size="medium"
-							variant="outlined"
-							component={RouterLink}
-							to={path}
-							sx={{ my: 2 }}
-						>
-							Go to Reading
-						</Button>
-					</CardActions>
+				<Card key={name} className="displayCard" sx={{ p: 2, my: 4 }}>
+					<Typography gutterBottom variant="h5">
+						{name}
+					</Typography>
+					<img
+						src={imageUrl}
+						alt={imageAlt}
+						className="readingPreview"
+						sx={{ py: 2 }}
+					/>
+					<Typography variant="body" sx={{ p: 2 }}>
+						{description}
+					</Typography>
+					<Button
+						size="medium"
+						variant="outlined"
+						component={RouterLink}
+						to={path}
+						sx={{ my: 2, maxWidth: 'fit-content', justifySelf: 'center' }}
+					>
+						Go to Reading
+					</Button>
 				</Card>
 			)
 		}
