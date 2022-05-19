@@ -118,7 +118,7 @@
 			[row1-start] '. card0 . card1 desc' fit-content(265px) [row1-end]
 			[row2-start] 'deal . card4 . desc' fit-content(265px) [row2-end]
 			[row3-start] '. card2 . card3 desc' fit-content(265px) [row3-end]
-			[row3-start] 'new new new new desc' fit-content(36.5px) [row3-end]
+			[row3-start] '. new new new desc' fit-content(36.5px) [row3-end]
 			[row4-start] '. . . . desc' auto [row4-end]
 			/ fit-content(150px) fit-content(150px) fit-content(150px) fit-content(
 				150px

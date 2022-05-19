@@ -41,7 +41,7 @@ const ThreeCardSpread = (props) => {
 		descriptionDisplay = (
 			<Description
 				description={description}
-				done={() => setDescription(null)}
+				setDescription={setDescription}
 				expanded={expanded}
 				setExpanded={setExpanded}
 			/>
@@ -59,7 +59,8 @@ const ThreeCardSpread = (props) => {
 							readingCards,
 							setShuffledCards,
 							setReadingCards,
-							setDialogOpen
+							setDialogOpen,
+							setDescription
 						)
 					}
 					deck={props.deck}
