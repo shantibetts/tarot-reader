@@ -11,23 +11,23 @@ const Description = (props) => {
 		props.setExpanded(!props.expanded)
 	}
 
-	if (props.description.name !== 'emptyCard') {
-		return (
-			<Container maxWidth="md" id="desc" sx={{ px: 0, py: 4 }}>
-				<CssBaseline />
-				<Typography variant="h4" sx={{ pt: 2 }}>
-					{props.description.positionName}
-				</Typography>
-				<Typography variant="body1" sx={{ py: 4 }}>
-					{props.description.positionDescription}
-				</Typography>
-				<Divider variant="middle" className="smallDivider" />
-
+	const card = props.description
+	let cardDescription = ''
+	let descriptionImage = ''
+	if (!props.dialogOpen) {
+		descriptionImage = (
+			<img className="tarotCard" src={card.url} alt={card.name} />
+		)
+	}
+	if (card && card.name !== 'emptyCard') {
+		cardDescription = (
+			<React.Fragment>
+				{descriptionImage}
 				<Typography variant="h4" sx={{ py: 2 }}>
-					{props.description.name}
+					{card.name}
 				</Typography>
 				<Typography variant="body1" sx={{ py: 2 }}>
-					{props.description.meaning_up}
+					{card.meaning_up}
 				</Typography>
 				<Collapse
 					in={props.expanded}
@@ -37,7 +37,7 @@ const Description = (props) => {
 				>
 					<Divider variant="middle" />
 					<Typography variant="body1" sx={{ py: 2 }}>
-						{props.description.desc}
+						{card.desc}
 					</Typography>
 				</Collapse>
 				<Button
@@ -50,9 +50,23 @@ const Description = (props) => {
 				>
 					{props.expanded ? 'Read Less' : 'Read More'}
 				</Button>
+			</React.Fragment>
+		)
+	}
+	if (card) {
+		return (
+			<Container id="desc" sx={{ px: 1, py: 4 }}>
+				<CssBaseline />
+				<Typography variant="h4" sx={{ pt: 2 }}>
+					{card.positionName}
+				</Typography>
+				<Typography variant="body1" sx={{ py: 4 }}>
+					{card.positionDescription}
+				</Typography>
+				{cardDescription}
 				<Container>
 					<Button
-						onClick={() => props.setDescription(null)}
+						onClick={props.done}
 						size="medium"
 						variant="outlined"
 						sx={{ m: 1 }}
@@ -60,25 +74,6 @@ const Description = (props) => {
 						Done
 					</Button>
 				</Container>
-			</Container>
-		)
-	} else {
-		return (
-			<Container maxWidth="sm" id="desc" sx={{ px: 0, py: 4 }}>
-				<CssBaseline />
-				<Typography variant="h4" sx={{ pt: 2, pb: 4 }}>
-					{props.description.positionName}
-				</Typography>
-				<Typography variant="body1" sx={{ pb: 2 }}>
-					{props.description.positionDescription}
-				</Typography>
-				<Button
-					onClick={() => props.setDescription(null)}
-					size="medium"
-					variant="outlined"
-				>
-					Done
-				</Button>
 			</Container>
 		)
 	}

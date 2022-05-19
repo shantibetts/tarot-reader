@@ -9,6 +9,7 @@ import readingConfigs from '../readingConfigs'
 import Deal from './Deal'
 import { shuffleCards, handleDeal, handleNewReading } from './Utils.js'
 import CardDialog from './CardDialog'
+import useMediaQuery from '@mui/material/useMediaQuery'
 
 const ThreeCardSpread = (props) => {
 	const [readingCards, setReadingCards] = useState(readingConfigs()[0])
@@ -16,6 +17,7 @@ const ThreeCardSpread = (props) => {
 	const [shuffledCards, setShuffledCards] = useState([])
 	const [expanded, setExpanded] = useState(false)
 	const [dialogOpen, setDialogOpen] = useState(false)
+	let desktop = useMediaQuery('(min-width:600px)')
 
 	useEffect(() => {
 		const newShuffledCards = shuffleCards(props.allCards)
@@ -23,8 +25,9 @@ const ThreeCardSpread = (props) => {
 	}, [props.allCards])
 
 	const handleDescription = (card) => {
-		setDescription(card)
 		setExpanded(false)
+		setDialogOpen(!desktop)
+		setDescription(card)
 	}
 
 	const cardsDisplay = readingCards.reading.map((card, i) => (
@@ -33,15 +36,16 @@ const ThreeCardSpread = (props) => {
 			card={card}
 			index={i}
 			handleDescription={handleDescription}
+			setDialogOpen={setDialogOpen}
 		/>
 	))
 
 	let descriptionDisplay = ''
-	if (description) {
+	if (description && desktop && !dialogOpen) {
 		descriptionDisplay = (
 			<Description
 				description={description}
-				setDescription={setDescription}
+				done={() => setDescription(null)}
 				expanded={expanded}
 				setExpanded={setExpanded}
 			/>
@@ -88,7 +92,10 @@ const ThreeCardSpread = (props) => {
 				<CardDialog
 					dialogOpen={dialogOpen}
 					setDialogOpen={setDialogOpen}
-					readingCards={readingCards}
+					description={description}
+					setDescription={setDescription}
+					expanded={expanded}
+					setExpanded={setExpanded}
 				/>
 			</Container>
 		</React.Fragment>

@@ -9,6 +9,7 @@ import readingConfigs from '../readingConfigs'
 import Deal from './Deal'
 import { shuffleCards, handleDeal, handleNewReading } from './Utils.js'
 import CardDialog from './CardDialog'
+import useMediaQuery from '@mui/material/useMediaQuery'
 
 const FiveCardSpread = (props) => {
 	const [readingCards, setReadingCards] = useState(readingConfigs()[1])
@@ -25,23 +26,26 @@ const FiveCardSpread = (props) => {
 	const handleDescription = (card) => {
 		setDescription(card)
 		setExpanded(false)
+		setDialogOpen(true)
 	}
 
 	const cardsDisplay = readingCards.reading.map((card, i) => (
 		<TarotCard
 			key={card.name_short}
-			index={i}
 			card={card}
+			index={i}
 			handleDescription={handleDescription}
+			setDialogOpen={setDialogOpen}
 		/>
 	))
 
 	let descriptionDisplay = ''
-	if (description) {
+	let desktop = useMediaQuery('(min-width:600px)')
+	if (description && desktop && !dialogOpen) {
 		descriptionDisplay = (
 			<Description
 				description={description}
-				setDescription={setDescription}
+				done={setDescription(null)}
 				expanded={expanded}
 				setExpanded={setExpanded}
 			/>
@@ -89,7 +93,10 @@ const FiveCardSpread = (props) => {
 				<CardDialog
 					dialogOpen={dialogOpen}
 					setDialogOpen={setDialogOpen}
-					readingCards={readingCards}
+					description={description}
+					setDescription={setDescription}
+					expanded={expanded}
+					setExpanded={setExpanded}
 				/>
 			</Container>
 		</Container>

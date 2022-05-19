@@ -20,8 +20,8 @@ const handleDeal = (
 	newReadingCards.index++
 	setShuffledCards(newShuffledCards)
 	setReadingCards(newReadingCards)
+	setDescription(newCard)
 	setDialogOpen(true)
-	setDescription(null)
 }
 
 const shuffleCards = (cards) => {
