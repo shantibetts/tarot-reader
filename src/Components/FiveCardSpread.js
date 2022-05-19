@@ -7,13 +7,19 @@ import Description from './Description'
 import Button from '@mui/material/Button'
 import readingConfigs from '../readingConfigs'
 import Deal from './Deal'
-import { shuffleCards, handleDeal, handleNewReading } from './Utils'
+import {
+	shuffleCards,
+	handleDeal,
+	handleNewReading,
+	handleDialog
+} from './Utils.js'
 
 const FiveCardSpread = (props) => {
 	const [readingCards, setReadingCards] = useState(readingConfigs()[1])
 	const [description, setDescription] = useState(null)
 	const [shuffledCards, setShuffledCards] = useState([])
 	const [expanded, setExpanded] = useState(false)
+	const [dialogOpen, setDialogOpen] = useState(false)
 
 	useEffect(() => {
 		const newShuffledCards = shuffleCards(props.allCards)
@@ -30,9 +36,6 @@ const FiveCardSpread = (props) => {
 			key={card.name_short}
 			index={i}
 			card={card}
-			span={4}
-			width={88.7}
-			height={154}
 			handleDescription={handleDescription}
 		/>
 	))

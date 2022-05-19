@@ -5,7 +5,8 @@ const handleDeal = (
 	shuffledCards,
 	readingCards,
 	setShuffledCards,
-	setReadingCards
+	setReadingCards,
+	setDialogOpen
 ) => {
 	const newShuffledCards = [...shuffledCards]
 	const newCard = newShuffledCards.shift()
@@ -18,6 +19,7 @@ const handleDeal = (
 	newReadingCards.index++
 	setShuffledCards(newShuffledCards)
 	setReadingCards(newReadingCards)
+	setDialogOpen(true)
 }
 
 const shuffleCards = (cards) => {

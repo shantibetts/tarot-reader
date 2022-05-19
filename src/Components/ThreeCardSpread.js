@@ -8,6 +8,7 @@ import Button from '@mui/material/Button'
 import readingConfigs from '../readingConfigs'
 import Deal from './Deal'
 import { shuffleCards, handleDeal, handleNewReading } from './Utils.js'
+import CardDialog from './CardDialog'
 
 const ThreeCardSpread = (props) => {
 	const [readingCards, setReadingCards] = useState(readingConfigs()[0])
@@ -15,10 +16,6 @@ const ThreeCardSpread = (props) => {
 	const [shuffledCards, setShuffledCards] = useState([])
 	const [expanded, setExpanded] = useState(false)
 	const [dialogOpen, setDialogOpen] = useState(false)
-
-	const handleDialog = () => {
-		setDialogOpen(!dialogOpen)
-	}
 
 	useEffect(() => {
 		const newShuffledCards = shuffleCards(props.allCards)
@@ -35,9 +32,6 @@ const ThreeCardSpread = (props) => {
 			key={card.name_short}
 			card={card}
 			index={i}
-			span={4}
-			width={88.7}
-			height={154}
 			handleDescription={handleDescription}
 		/>
 	))
@@ -47,7 +41,7 @@ const ThreeCardSpread = (props) => {
 		descriptionDisplay = (
 			<Description
 				description={description}
-				setDescription={setDescription}
+				done={() => setDescription(null)}
 				expanded={expanded}
 				setExpanded={setExpanded}
 			/>
@@ -64,12 +58,12 @@ const ThreeCardSpread = (props) => {
 							shuffledCards,
 							readingCards,
 							setShuffledCards,
-							setReadingCards
+							setReadingCards,
+							setDialogOpen
 						)
 					}
 					deck={props.deck}
 					readingCards={readingCards}
-					sx={{ transform: 'rotate(90deg)' }}
 				/>
 				{cardsDisplay}
 				<Button
@@ -90,6 +84,11 @@ const ThreeCardSpread = (props) => {
 					New Reading
 				</Button>
 				{descriptionDisplay}
+				<CardDialog
+					dialogOpen={dialogOpen}
+					setDialogOpen={setDialogOpen}
+					readingCards={readingCards}
+				/>
 			</Container>
 		</React.Fragment>
 	)

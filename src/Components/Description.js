@@ -52,7 +52,7 @@ const Description = (props) => {
 				</Button>
 				<Container>
 					<Button
-						onClick={() => props.setDescription(null)}
+						onClick={() => props.done}
 						size="medium"
 						variant="outlined"
 						sx={{ m: 1 }}
