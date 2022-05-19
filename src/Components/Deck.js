@@ -9,17 +9,14 @@ import ImageList from '@mui/material/ImageList'
 const Deck = (props) => {
 	const imgList = props.cardPreviews.map((item) => {
 		return (
-			<ImageListItem key={item.name_short}>
-				<img
-					style={{
-						width: '150px'
-					}}
-					src={item.url}
-					srcSet={item.url}
-					alt={item.name}
-					loading="lazy"
-				/>
-			</ImageListItem>
+			<img
+				key={item.name_short}
+				className="tarotCard"
+				src={item.url}
+				srcSet={item.url}
+				alt={item.name}
+				loading="lazy"
+			/>
 		)
 	})
 	const linkList = props.links.map((link) => {
@@ -57,35 +54,12 @@ const Deck = (props) => {
 
 	return (
 		<Card className="displayCard" sx={{ p: 1, my: 4 }}>
-			<CardContent
-				sx={{
-					p: 1,
-					m: 1,
-					display: 'flex',
-					flexDirection: 'column',
-					justifyContent: 'center',
-					alignItems: 'center'
-				}}
-			>
-				<Typography variant="h5" sx={{ pb: 2 }}>
-					{props.name}
-				</Typography>
-				<ImageList
-					sx={{
-						display: 'grid',
-						gridTemplateColumns: '1fr 1fr',
-						justifyContent: 'center',
-						alignContent: 'center',
-						m: 1
-					}}
-					cols={2}
-					rowHeight="auto"
-				>
-					{imgList}
-				</ImageList>
-				<Typography sx={{ p: 2 }}>{props.description}</Typography>
-				<CardActions>{linkList}</CardActions>
-			</CardContent>
+			<Typography variant="h5" sx={{ pb: 2 }}>
+				{props.name}
+			</Typography>
+			<div className="imageList">{imgList}</div>
+			<Typography sx={{ p: 2 }}>{props.description}</Typography>
+			<div className="center">{linkList}</div>
 		</Card>
 	)
 }

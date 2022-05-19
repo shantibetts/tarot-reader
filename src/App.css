@@ -8,12 +8,20 @@
 	max-height: 534px;
 	border-radius: 8px;
 }
-.displayCard {
+.displayCard,
+.imageList {
 	min-width: 275px;
 	max-width: 500px;
 	display: grid;
-	grid: auto auto;
+	grid: auto / auto;
 	gap: 8px;
+	justify-content: center;
+	align-items: center;
+}
+.imageList {
+	min-width: 150px;
+	grid: auto / auto auto;
+	height: auto;
 }
 #noPadding {
 	padding: 0;
