@@ -23,58 +23,47 @@ const Description = (props) => {
 		cardDescription = (
 			<React.Fragment>
 				{descriptionImage}
-				<Typography variant="h4" sx={{ py: 2 }}>
-					{card.name}
-				</Typography>
-				<Typography variant="body1" sx={{ py: 2 }}>
-					{card.meaning_up}
-				</Typography>
-				<Collapse
-					in={props.expanded}
-					timeout="auto"
-					unmountOnExit
-					sx={{ p: 0 }}
-				>
-					<Divider variant="middle" />
-					<Typography variant="body1" sx={{ py: 2 }}>
-						{card.desc}
-					</Typography>
-				</Collapse>
-				<Button
-					expand={props.expanded ? 'true' : undefined}
-					onClick={handleExpandClick}
-					aria-expanded={props.expanded}
-					aria-label="show more"
-					size="small"
-					sx={{ mb: 4, alignSelf: 'right' }}
-				>
-					{props.expanded ? 'Read Less' : 'Read More'}
-				</Button>
+				<Typography variant="h4">{card.name}</Typography>
+				<div>
+					<Typography variant="body1">{card.meaning_up}</Typography>
+					<Collapse
+						in={props.expanded}
+						timeout="auto"
+						unmountOnExit
+						sx={{ p: 0 }}
+					>
+						<br />
+						<Typography variant="body1">{card.desc}</Typography>
+					</Collapse>
+					<div className="alignRight">
+						<Button
+							expand={props.expanded ? 'true' : undefined}
+							onClick={handleExpandClick}
+							aria-expanded={props.expanded}
+							aria-label="show more"
+							size="small"
+							sx={{ ml: 'auto' }}
+						>
+							{props.expanded ? 'Read Less' : 'Read More'}
+						</Button>
+					</div>
+				</div>
 			</React.Fragment>
 		)
 	}
 	if (card) {
 		return (
-			<Container id="desc" className="center" sx={{ px: 1, py: 4 }}>
+			<div id="desc" className="displayCard">
 				<CssBaseline />
-				<Typography variant="h4" sx={{ pt: 2 }}>
-					{card.positionName}
-				</Typography>
-				<Typography variant="body1" sx={{ py: 4 }}>
-					{card.positionDescription}
-				</Typography>
+				<Typography variant="h4">{card.positionName}</Typography>
+				<Typography variant="body1">{card.positionDescription}</Typography>
 				{cardDescription}
-				<Container>
-					<Button
-						onClick={props.done}
-						size="medium"
-						variant="outlined"
-						sx={{ m: 1 }}
-					>
+				<div>
+					<Button onClick={props.done} size="medium" variant="outlined">
 						Done
 					</Button>
-				</Container>
-			</Container>
+				</div>
+			</div>
 		)
 	}
 }

@@ -37,6 +37,7 @@ const CardDialog = (props) => {
 					expanded={props.expanded}
 					setExpanded={props.setExpanded}
 					done={handleDialogClose}
+					sx={{ p: 2 }}
 				/>
 			</Dialog>
 		)

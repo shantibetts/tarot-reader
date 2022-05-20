@@ -7,16 +7,36 @@
 	max-width: 300px;
 	max-height: 534px;
 	border-radius: 8px;
+	align-self: center;
+}
+.listDisplay {
+	display: grid;
+	grid: auto / auto auto;
+	margin: 3vmin 3vmin;
+	gap: 3vmin;
+	justify-content: center;
+}
+.cardList {
+	grid: auto / auto;
+	margin: 0;
+}
+#deckList {
+	display: grid;
+	grid: auto / auto;
+	margin: 3vmin auto;
+	justify-content: center;
 }
 .displayCard,
 .imageList {
-	min-width: 275px;
 	max-width: 500px;
 	display: grid;
 	grid: auto / auto;
-	gap: 8px;
+	gap: 3vmin;
 	justify-content: center;
+	justify-items: center;
 	align-items: center;
+	align-content: center;
+	align-self: start;
 }
 .imageList {
 	min-width: 150px;
@@ -25,6 +45,14 @@
 }
 #noPadding {
 	padding: 0;
+}
+.center {
+	justify-self: center;
+	align-self: center;
+}
+.alignRight {
+	display: flex;
+	justify-content: right;
 }
 .readingPreview {
 	width: 100%;
@@ -81,6 +109,8 @@
 }
 #desc {
 	grid-area: desc;
+	text-align: left;
+	padding: 3vmin;
 }
 #newReading {
 	grid-area: new;

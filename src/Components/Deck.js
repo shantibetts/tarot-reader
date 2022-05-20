@@ -53,7 +53,7 @@ const Deck = (props) => {
 	})
 
 	return (
-		<Card className="displayCard" sx={{ p: 1, my: 4 }}>
+		<Card className="displayCard" sx={{ p: 1 }}>
 			<Typography variant="h5" sx={{ pb: 2 }}>
 				{props.name}
 			</Typography>

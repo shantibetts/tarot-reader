@@ -29,7 +29,7 @@ const Home = () => {
 	const readingList = readingConfigs().map(
 		({ name, path, description, imageUrl, imageAlt }) => {
 			return (
-				<Card key={name} className="displayCard" sx={{ p: 2, my: 4 }}>
+				<Card key={name} className="displayCard" sx={{ p: 2 }}>
 					<Typography gutterBottom variant="h5">
 						{name}
 					</Typography>
@@ -61,16 +61,10 @@ const Home = () => {
 				title="Welcome"
 				text="Choose a deck and a reading layout to get started"
 			/>
-			<Container>
-				<Grid container spacing={2}>
-					<Grid item xs={12} md={6}>
-						{deckList}
-					</Grid>
-					<Grid item xs={12} md={6}>
-						{readingList}
-					</Grid>
-				</Grid>
-			</Container>
+			<div className="listDisplay">
+				<div className="listDisplay cardList">{deckList}</div>
+				<div className="listDisplay cardList">{readingList}</div>
+			</div>
 		</div>
 	)
 }

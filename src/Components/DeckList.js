@@ -9,27 +9,20 @@ const DeckList = () => {
 	const deckList = tarotDecks.map(
 		({ name, description, links, cardPreviews }) => {
 			return (
-				<Grid item xs={12}>
-					<Deck
-						key={name}
-						name={name}
-						description={description}
-						links={links}
-						cardPreviews={cardPreviews}
-					/>
-				</Grid>
+				<Deck
+					key={name}
+					name={name}
+					description={description}
+					links={links}
+					cardPreviews={cardPreviews}
+				/>
 			)
 		}
 	)
 
 	return (
-		<div className="deckList">
-			<Title title="Tarot Decks" text="" />
-			<Container className="center">
-				<Grid container spacing={2}>
-					{deckList}
-				</Grid>
-			</Container>
+		<div>
+			<Container id="deckList">{deckList}</Container>
 		</div>
 	)
 }

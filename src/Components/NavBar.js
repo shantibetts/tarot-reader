@@ -7,10 +7,11 @@ import IconButton from '@mui/material/IconButton'
 import MenuIcon from '@mui/icons-material/Menu'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
-import { Link as RouterLink } from 'react-router-dom'
+import { Link as RouterLink, useLocation } from 'react-router-dom'
 import useScrollTrigger from '@mui/material/useScrollTrigger'
 import Slide from '@mui/material/Slide'
 import CssBaseline from '@mui/material/CssBaseline'
+import { LocationDisabledOutlined } from '@mui/icons-material'
 
 const NavBar = () => {
 	const [anchorEl, setAnchorEl] = React.useState(null)
@@ -21,7 +22,19 @@ const NavBar = () => {
 	const handleClose = () => {
 		setAnchorEl(null)
 	}
-
+	let location = useLocation().pathname
+	let locationName = ''
+	if (location === '/') {
+		locationName = 'Tarot Reader'
+	} else if (location === '/decks') {
+		locationName = 'Tarot Decks'
+	} else if (location === '/threecardspread') {
+		locationName = 'Three Card Spread'
+	} else if (location === '/fivecardspread') {
+		locationName = 'Five Card Spread'
+	} else if (location === '/about') {
+		locationName = 'About Tarot Reader'
+	}
 	const trigger = useScrollTrigger()
 
 	return (
@@ -86,7 +99,7 @@ const NavBar = () => {
 								</MenuItem>
 							</Menu>
 							<Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-								Tarot Reader
+								{locationName}
 							</Typography>
 						</Toolbar>
 					</AppBar>
