@@ -2,17 +2,20 @@
 
 ## Project Links
 
+[Tarot Reader Homepage](https://shantibetts.github.io/tarot-reader)
+[Portfolio Website](https://shantibetts.github.io/Portfolio/)
+
 ## Project Schedule
 
-| Day       | Deliverable                             | Status     |
-| --------- | --------------------------------------- | ---------- |
-| Friday    | Project Planning                        | complete   |
-| Sat/Sun   | Project setup and skeleton              | complete   |
-| Monday    | Working components                      | complete   |
-| Tuesday   | Styling & complete MVP                  | incomplete |
-| Wednesday | Celtic cross reading template           | incomplete |
-| Thursday  | Post MVP styling (themes) / other decks | incomplete |
-| Friday    | Present                                 | incomplete |
+| Day       | Deliverable                             | Status   |
+| --------- | --------------------------------------- | -------- |
+| Friday    | Project Planning                        | complete |
+| Sat/Sun   | Project setup and skeleton              | complete |
+| Monday    | Working components                      | complete |
+| Tuesday   | Styling & complete MVP                  | complete |
+| Wednesday | Celtic cross reading template           | complete |
+| Thursday  | Post MVP styling (themes) / other decks | complete |
+| Friday    | Present                                 | complete |
 
 ## Project Description
 
@@ -88,18 +91,21 @@ I want to create an interactive app that will do simple, and then not so simple 
 
 #### PostMVP
 
-| Component                    | Priority | Estimated Time | Actual Time |
-| ---------------------------- | :------: | :------------: | :---------: |
-| Themes / Darkmode            |    1     |      6hr       |     hr      |
-| Add multiple decks           |    2     |      2hr       |     hr      |
-| Nested Nav menu for Readings |   0.5    |      2hr       |     hr      |
-| 7 card reading               |   2.5    |      2hr       |     hr      |
-| Pentagram reading            |    2     |      2hr       |     hr      |
-| Celtic Cross reading         |    1     |      4hr       |     hr      |
-| Card fullscreen progression  |    3     |      6hr       |     hr      |
-| Card animations              |   0.5    |      6hr       |     hr      |
-| Create and add Favicon       |    0     |      3hr       |     hr      |
-| Total                        |          |     33hrs      |     hr      |
+| Component                                              | Priority | Estimated Time | Actual Time |
+| ------------------------------------------------------ | :------: | :------------: | :---------: |
+| Themes / Darkmode                                      |    1     |      6hr       |     hr      |
+| Add multiple decks (in progress)                       |    2     |      2hr       |     2hr     |
+| Nested Nav menu for Readings                           |   0.5    |      2hr       |     hr      |
+| 7 card reading                                         |   2.5    |      2hr       |     hr      |
+| 5 card reading                                         |    2     |      2hr       |     2hr     |
+| Celtic Cross reading                                   |    1     |      4hr       |     hr      |
+| Card fullscreen progression                            |    3     |      6hr       |     4hr     |
+| Card animations                                        |   0.5    |      6hr       |     hr      |
+| Create and add Favicon                                 |    0     |      3hr       |     hr      |
+| ++ Globalization of functions / variables for readings |    3     |       x        |     6hr     |
+| ++ MVP Feature styling                                 |    3     |       x        |     4hr     |
+| ++ Removal of MUI Grid and many MUI Components         |    5     |       x        |     4hr     |
+| Total                                                  |          |     33hrs      |    12hr     |
 
 ## Additional Libraries
 
@@ -108,17 +114,31 @@ Router for navigation
 
 ## Code Snippet
 
-This is my working API call, it querries the API and returns an array of objects which hold the card data.
+This is my handleDeal function. It takes in a lot of variables(functions) so that it can be run by any reading. It takes the first card from the shuffledCards array and replaces the appropriate card in the reading with that card.
 
 ```js
-useEffect(() => {
-	fetch('https://rws-cards-api.herokuapp.com/api/v1/cards/')
-		.then((response) => response.json())
-		.then((data) => {
-			console.log(data)
-		})
-		.catch(() => console.log('Problem with Tarot Cards API fetch'))
-}, [])
+const handleDeal = (
+	shuffledCards,
+	readingCards,
+	setShuffledCards,
+	setReadingCards,
+	setDialogOpen,
+	setDescription
+) => {
+	const newShuffledCards = [...shuffledCards]
+	const newCard = newShuffledCards.shift()
+	let newReadingCards = { ...readingCards }
+	newCard.positionName =
+		newReadingCards.reading[newReadingCards.index].positionName
+	newCard.positionDescription =
+		newReadingCards.reading[newReadingCards.index].positionDescription
+	newReadingCards.reading.splice(newReadingCards.index, 1, newCard)
+	newReadingCards.index++
+	setShuffledCards(newShuffledCards)
+	setReadingCards(newReadingCards)
+	setDescription(newCard)
+	setDialogOpen(true)
+}
 ```
 
 ## Issues and Resolutions
@@ -197,3 +217,7 @@ We see that TarotCard is using logic to write either a card with an image or a b
 ### Resolution
 
 I added a blank card of appropriate dimensions to a CardMedia component. It solved two issues: first the blank card makes sure the blank card spaces show at the correct aspect ratio before the picture is populated, and it also provides the child necessary for the card object. The too-short still shows momentarily before getting replaced with the Tarot image, so I would like to find a better way to determine the card-object's height.
+
+### Final Resolution
+
+I removed the cards entirely, and just wrapped the image in a MUI Button. This gave me the functionality I really wanted - the image of a blank / populated card, plus the highlighting and ripple of the button. By removing all the MUI Card, CardActionArea, CardContent, Grid container, Grid items, etc, I gained a lot of control over margins, padding, and how the card image would appear, which I was able to leverage with CSS Grid and responsive CSS media calls.

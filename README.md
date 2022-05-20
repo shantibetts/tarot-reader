@@ -1,5 +1,6 @@
-Product Name
-Short blurb about what your product does.
+#Tarot Reader
+
+Tarot Reader is a tool for both new and experienced Tarot readers. Providing the structure of basic Tarot readings and quick guides to the meanings of the positions of the cards and the meanings of the cards themselves, Tarot Reader doesn't create a Tarot reading so much as provide the tools for a reading.
 
 NPM Version Build Status Downloads Stats
 

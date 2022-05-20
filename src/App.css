@@ -11,7 +11,7 @@
 }
 .listDisplay {
 	display: grid;
-	grid: auto / auto auto;
+	grid: auto / auto;
 	margin: 3vmin 3vmin;
 	gap: 3vmin;
 	justify-content: center;
@@ -127,6 +127,9 @@
 			[row3-start] 'new new new desc' fit-content(36.5px) [row3-end]
 			[row4-start] '. . . desc' auto [row4-end]
 			/ fit-content(150px) fit-content(150px) fit-content(150px) 1fr;
+	}
+	.listDisplay {
+		grid: auto / auto auto;
 	}
 	#fiveCardSpread {
 		grid:
