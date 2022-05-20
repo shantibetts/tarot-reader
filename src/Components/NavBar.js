@@ -11,7 +11,6 @@ import { Link as RouterLink, useLocation } from 'react-router-dom'
 import useScrollTrigger from '@mui/material/useScrollTrigger'
 import Slide from '@mui/material/Slide'
 import CssBaseline from '@mui/material/CssBaseline'
-import { LocationDisabledOutlined } from '@mui/icons-material'
 
 const NavBar = () => {
 	const [anchorEl, setAnchorEl] = React.useState(null)

@@ -5,9 +5,7 @@ import tarotDecks from '../tarotDecks'
 import Title from './Title'
 import readingConfigs from '../readingConfigs'
 import Typography from '@mui/material/Typography'
-import Container from '@mui/material/Container'
 import { Link as RouterLink } from 'react-router-dom'
-import Grid from '@mui/material/Grid'
 
 const Home = () => {
 	const deckList = tarotDecks.map(

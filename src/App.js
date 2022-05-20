@@ -1,6 +1,6 @@
 import './App.css'
 import { useState, useEffect } from 'react'
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import Home from './Components/Home'
 import DeckList from './Components/DeckList'
 import ThreeCardSpread from './Components/ThreeCardSpread'
@@ -29,8 +29,8 @@ function App() {
 		<div className="App">
 			<NavBar />
 			<Routes>
-				<Route path="/" element={<Home />} />
-				<Route path="/decks" element={<DeckList />} />
+				<Route path="/" element={<Home setDeck={setDeck} />} />
+				<Route path="/decks" element={<DeckList setDeck={setDeck} />} />
 				<Route
 					path="/threeCardSpread"
 					element={<ThreeCardSpread allCards={allCards} deck={deck} />}

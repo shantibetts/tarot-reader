@@ -1,10 +1,6 @@
-import ImageListItem from '@mui/material/ImageListItem'
 import Card from '@mui/material/Card'
-import CardContent from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
-import CardActions from '@mui/material/CardActions'
-import ImageList from '@mui/material/ImageList'
 
 const Deck = (props) => {
 	const imgList = props.cardPreviews.map((item) => {

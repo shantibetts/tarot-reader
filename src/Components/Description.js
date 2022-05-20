@@ -1,10 +1,8 @@
-import Container from '@mui/material/Container'
 import CssBaseline from '@mui/material/CssBaseline'
 import * as React from 'react'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import Collapse from '@mui/material/Collapse'
-import Divider from '@mui/material/Divider'
 
 const Description = (props) => {
 	const handleExpandClick = () => {
