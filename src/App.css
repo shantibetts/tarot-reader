@@ -9,7 +9,8 @@
 	border-radius: 8px;
 	align-self: center;
 }
-.listDisplay {
+.listDisplay,
+.smallListDisplay {
 	display: grid;
 	grid: auto / auto;
 	margin: 3vmin 3vmin;
@@ -120,6 +121,9 @@
 	.smallDivider {
 		display: none;
 	}
+	#readingList {
+		grid: auto / auto;
+	}
 	#threeCardSpread {
 		grid:
 			[row1-start] 'deal . . desc' fit-content(265px) [row1-end]
@@ -153,5 +157,10 @@
 				150px
 			)
 			1fr;
+	}
+}
+@media only screen and (min-width: 1500px) {
+	.smallListDisplay {
+		grid: auto / auto auto;
 	}
 }

@@ -60,8 +60,8 @@ const Home = () => {
 				text="Choose a deck and a reading layout to get started"
 			/>
 			<div className="listDisplay">
-				<div className="listDisplay cardList">{deckList}</div>
-				<div className="listDisplay cardList">{readingList}</div>
+				<div className="smallListDisplay cardList">{deckList}</div>
+				<div className="smallListDisplay cardList">{readingList}</div>
 			</div>
 		</div>
 	)
