@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/tarot-reader/static/css/main.fa15409c.css",
-    "main.js": "/tarot-reader/static/js/main.18383e61.js",
+    "main.css": "/tarot-reader/static/css/main.ff69b5a8.css",
+    "main.js": "/tarot-reader/static/js/main.d793c32d.js",
     "static/media/ThreeCardBasic.png": "/tarot-reader/static/media/ThreeCardBasic.e42f4e137cc79a4e8533.png",
     "static/media/FiveCardSpread.png": "/tarot-reader/static/media/FiveCardSpread.7d227464e97b28b4b690.png",
     "index.html": "/tarot-reader/index.html",
-    "main.fa15409c.css.map": "/tarot-reader/static/css/main.fa15409c.css.map",
-    "main.18383e61.js.map": "/tarot-reader/static/js/main.18383e61.js.map"
+    "main.ff69b5a8.css.map": "/tarot-reader/static/css/main.ff69b5a8.css.map",
+    "main.d793c32d.js.map": "/tarot-reader/static/js/main.d793c32d.js.map"
   },
   "entrypoints": [
-    "static/css/main.fa15409c.css",
-    "static/js/main.18383e61.js"
+    "static/css/main.ff69b5a8.css",
+    "static/js/main.d793c32d.js"
   ]
 }
