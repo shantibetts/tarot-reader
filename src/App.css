@@ -59,7 +59,7 @@
 	width: 100%;
 	height: auto;
 }
-#threeCardSpread {
+#threecardspread {
 	display: grid;
 	grid:
 		[row1-start] 'deal . .' auto [row1-end]
@@ -70,7 +70,7 @@
 	gap: 3vmin;
 	padding: 3vmin;
 }
-#fiveCardSpread {
+#fivecardspread {
 	display: grid;
 	grid:
 		[row1-start] 'card0 . card1' auto [row1-end]
@@ -124,7 +124,7 @@
 	#readingList {
 		grid: auto / auto;
 	}
-	#threeCardSpread {
+	#threecardspread {
 		grid:
 			[row1-start] 'deal . . desc' fit-content(265px) [row1-end]
 			[row2-start] 'card0 card1 card2 desc' fit-content(265px) [row2-end]
@@ -135,7 +135,7 @@
 	.listDisplay {
 		grid: auto / auto auto;
 	}
-	#fiveCardSpread {
+	#fivecardspread {
 		grid:
 			[row1-start] 'card0 . card1 desc' fit-content(265px) [row1-end]
 			[row2-start] 'deal card4 . desc' fit-content(265px) [row2-end]
@@ -146,7 +146,7 @@
 	}
 }
 @media only screen and (min-width: 1200px) {
-	#fiveCardSpread {
+	#fivecardspread {
 		grid:
 			[row1-start] '. card0 . card1 desc' fit-content(265px) [row1-end]
 			[row2-start] 'deal . card4 . desc' fit-content(265px) [row2-end]

@@ -3,8 +3,8 @@ import { useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Home from './Components/Home'
 import DeckList from './Components/DeckList'
-import ThreeCardSpread from './Components/ThreeCardSpread'
-import FiveCardSpread from './Components/FiveCardSpread'
+import Reading from './Components/Reading'
+import readingConfigs from './readingConfigs'
 import NavBar from './Components/NavBar'
 import About from './Components/About'
 import tarotDecks from './tarotDecks'
@@ -25,20 +25,29 @@ function App() {
 			})
 			.catch(() => console.log('Problem with Tarot Cards API fetch'))
 	}, [])
+
+	const readingList = readingConfigs().map((reading, index) => (
+		<Route
+			key={reading.name}
+			path={reading.path}
+			element={
+				<Reading
+					index={index}
+					reading={reading}
+					allCards={allCards}
+					deck={deck}
+				/>
+			}
+		/>
+	))
+
 	return (
 		<div className="App">
 			<NavBar />
 			<Routes>
 				<Route path="/" element={<Home setDeck={setDeck} />} />
 				<Route path="/decks" element={<DeckList setDeck={setDeck} />} />
-				<Route
-					path="/threeCardSpread"
-					element={<ThreeCardSpread allCards={allCards} deck={deck} />}
-				/>
-				<Route
-					path="/fiveCardSpread"
-					element={<FiveCardSpread allCards={allCards} deck={deck} />}
-				/>
+				{readingList}
 				<Route path="/about" element={<About />} />
 			</Routes>
 		</div>
