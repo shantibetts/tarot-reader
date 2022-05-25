@@ -9,9 +9,12 @@ import Deal from './Deal'
 import CardDialog from './CardDialog'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { useLocation } from 'react-router-dom'
+import readingConfigs from '../readingConfigs'
 
 const Reading = (props) => {
-	const [readingCards, setReadingCards] = useState(props.reading)
+	const [readingConfig, setReadingConfig] = useState(
+		readingConfigs()[props.index]
+	)
 	const [description, setDescription] = useState(null)
 	const [shuffledCards, setShuffledCards] = useState([])
 	const [expanded, setExpanded] = useState(false)
@@ -21,7 +24,7 @@ const Reading = (props) => {
 	useEffect(() => {
 		const newShuffledCards = shuffleCards()
 		setShuffledCards(newShuffledCards)
-	}, [props.currentDeck.allCards])
+	}, [props.currentDeck])
 
 	useEffect(() => {
 		handleNewReading()
@@ -30,15 +33,15 @@ const Reading = (props) => {
 	const handleDeal = () => {
 		const newShuffledCards = [...shuffledCards]
 		const newCard = newShuffledCards.shift()
-		let newReadingCards = { ...readingCards }
+		let newReadingConfig = { ...readingConfig }
 		newCard.positionName =
-			newReadingCards.reading[newReadingCards.index].positionName
+			newReadingConfig.readingCards[newReadingConfig.index].positionName
 		newCard.positionDescription =
-			newReadingCards.reading[newReadingCards.index].positionDescription
-		newReadingCards.reading.splice(newReadingCards.index, 1, newCard)
-		newReadingCards.index++
+			newReadingConfig.readingCards[newReadingConfig.index].positionDescription
+		newReadingConfig.readingCards.splice(newReadingConfig.index, 1, newCard)
+		newReadingConfig.index++
 		setShuffledCards(newShuffledCards)
-		setReadingCards(newReadingCards)
+		setReadingConfig(newReadingConfig)
 		setDescription(newCard)
 		setDialogOpen(true)
 	}
@@ -55,7 +58,7 @@ const Reading = (props) => {
 	const handleNewReading = () => {
 		const newShuffledCards = shuffleCards()
 		setShuffledCards(newShuffledCards)
-		setReadingCards(props.reading)
+		setReadingConfig(readingConfigs()[props.index])
 		setDescription(null)
 	}
 
@@ -65,7 +68,7 @@ const Reading = (props) => {
 		e.detail === 2 || !desktop ? setDialogOpen(true) : setDialogOpen(false)
 	}
 
-	const cardsDisplay = readingCards.reading.map((card, i) => (
+	const cardsDisplay = readingConfig.readingCards.map((card, i) => (
 		<TarotCard
 			key={card.name_short}
 			card={card}
@@ -87,7 +90,7 @@ const Reading = (props) => {
 		)
 	}
 
-	const readingId = props.reading.path.substring(1)
+	const readingId = readingConfig.path.substring(1)
 
 	return (
 		<React.Fragment>
@@ -96,7 +99,7 @@ const Reading = (props) => {
 				<Deal
 					handleDeal={handleDeal}
 					currentDeck={props.currentDeck}
-					readingCards={readingCards}
+					readingConfig={readingConfig}
 				/>
 				{cardsDisplay}
 				<Button

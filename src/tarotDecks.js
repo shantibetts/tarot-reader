@@ -1,7 +1,7 @@
 const tarotDecks = [
 	{
 		imageFetchUrls: {
-			prepend: 'https://www.sacred-texts.com/tarot/pkt/img/',
+			prepend: 'http://www.sacred-texts.com/tarot/pkt/img/',
 			append: '.jpg'
 		},
 		cardPreviews: [
@@ -40,8 +40,8 @@ const tarotDecks = [
 	},
 	{
 		imageFetchUrls: {
-			prepend: 'https://www.simplytarot.com/wp-content/uploads/2015/04/',
-			append: '-tarot.card.png'
+			prepend: 'http://www.simplytarot.com/wp-content/uploads/2015/04/',
+			append: '-tarot-card.png'
 		},
 		cardPreviews: [
 			{

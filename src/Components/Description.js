@@ -14,7 +14,7 @@ const Description = (props) => {
 	let descriptionImage = ''
 	if (!props.dialogOpen) {
 		descriptionImage = (
-			<img className="tarotCard" src={card.url} alt={card.name} />
+			<img className="tarotCard" src={card.imageUrl} alt={card.name} />
 		)
 	}
 	if (card && card.name !== 'emptyCard') {

@@ -6,7 +6,7 @@ const readingConfigs = () => {
 		{
 			name: 'Three Card Spread',
 			path: '/threecardspread',
-			reading: [
+			readingCards: [
 				{
 					name: 'emptyCard',
 					name_short: 'ec1',
@@ -36,7 +36,7 @@ const readingConfigs = () => {
 		{
 			name: 'Five Card Spread',
 			path: '/fivecardspread',
-			reading: [
+			readingCards: [
 				{
 					name: 'emptyCard',
 					name_short: 'ec1',

@@ -12,7 +12,7 @@ import houseDeckData from './houseDeckData'
 
 function App() {
 	const [currentDeck, setCurrentDeck] = useState(tarotDecks[0])
-	console.log(tarotDecks)
+
 	useEffect(() => {
 		fetch('https://rws-cards-api.herokuapp.com/api/v1/cards/')
 			.then((response) => response.json())
@@ -30,10 +30,15 @@ function App() {
 			.catch(() => console.log('Problem with Tarot Cards API fetch'))
 		const houseDeckCards = houseDeckData.map((card) => {
 			const newCard = {}
-			newCard.imageUrl =
-				tarotDecks[1].imageFetchUrls.prepend +
-				card.name_short +
-				tarotDecks[1].imageFetchUrls.append
+			if (card.name === 'ten-of-wands') {
+				newCard.imageUrl =
+					'https://www.simplytarot.com/wp-content/uploads/2015/04/ten-of-wands-tarot-care.png'
+			} else {
+				newCard.imageUrl =
+					tarotDecks[1].imageFetchUrls.prepend +
+					card.name +
+					tarotDecks[1].imageFetchUrls.append
+			}
 			newCard.isReversed = false
 			newCard.name_short = card.name
 			newCard.value = card.card_index
@@ -57,9 +62,7 @@ function App() {
 		<Route
 			key={reading.name}
 			path={reading.path}
-			element={
-				<Reading index={index} reading={reading} currentDeck={currentDeck} />
-			}
+			element={<Reading index={index} currentDeck={currentDeck} />}
 		/>
 	))
 
