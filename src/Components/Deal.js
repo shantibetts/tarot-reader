@@ -1,4 +1,5 @@
 import Button from '@mui/material/Button'
+import { useContext } from 'react'
 
 const Deal = (props) => {
 	return (
@@ -11,8 +12,8 @@ const Deal = (props) => {
 		>
 			<img
 				className="tarotCard"
-				src={props.deck.cardPreviews[0].url}
-				alt={props.deck.name}
+				src={props.currentDeck.cardPreviews[0].url}
+				alt={props.currentDeck.name}
 			/>
 		</Button>
 	)

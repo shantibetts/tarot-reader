@@ -7,7 +7,7 @@ import readingConfigs from '../readingConfigs'
 import Typography from '@mui/material/Typography'
 import { Link as RouterLink } from 'react-router-dom'
 
-const Home = () => {
+const Home = (props) => {
 	const deckList = tarotDecks.map(
 		({ name, descriptionShort, cardPreviews }) => {
 			return (
@@ -20,6 +20,8 @@ const Home = () => {
 						{ name: 'More Info', url: '/decks' }
 					]}
 					cardPreviews={cardPreviews}
+					currentDeck={props.currentDeck}
+					setCurrentDeck={props.setCurrentDeck}
 				/>
 			)
 		}

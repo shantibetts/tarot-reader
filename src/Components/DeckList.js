@@ -2,7 +2,7 @@ import Deck from './Deck'
 import tarotDecks from '../tarotDecks'
 import Container from '@mui/material/Container'
 
-const DeckList = () => {
+const DeckList = (props) => {
 	const deckList = tarotDecks.map(
 		({ name, description, links, cardPreviews }) => {
 			return (
@@ -12,6 +12,8 @@ const DeckList = () => {
 					description={description}
 					links={links}
 					cardPreviews={cardPreviews}
+					currentDeck={props.currentDeck}
+					setCurrentDeck={props.setCurrentDeck}
 				/>
 			)
 		}

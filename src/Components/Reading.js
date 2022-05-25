@@ -21,7 +21,7 @@ const Reading = (props) => {
 	useEffect(() => {
 		const newShuffledCards = shuffleCards()
 		setShuffledCards(newShuffledCards)
-	}, [props.allCards])
+	}, [props.currentDeck.allCards])
 
 	useEffect(() => {
 		handleNewReading()
@@ -44,7 +44,7 @@ const Reading = (props) => {
 	}
 
 	const shuffleCards = () => {
-		let newShuffledCards = [...props.allCards]
+		let newShuffledCards = [...props.currentDeck.allCards]
 		newShuffledCards = newShuffledCards
 			.map((card) => ({ card: card, random: Math.random() }))
 			.sort((a, b) => a.random - b.random)
@@ -95,7 +95,7 @@ const Reading = (props) => {
 			<Container id={readingId}>
 				<Deal
 					handleDeal={handleDeal}
-					deck={props.deck}
+					currentDeck={props.currentDeck}
 					readingCards={readingCards}
 				/>
 				{cardsDisplay}

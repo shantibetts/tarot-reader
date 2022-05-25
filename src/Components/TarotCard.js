@@ -8,7 +8,11 @@ const TarotCard = (props) => {
 	if (props.card.name !== 'emptyCard') {
 		return (
 			<Button onClick={handleDescription} id={cardID}>
-				<img className="tarotCard" src={props.card.url} alt={props.card.name} />
+				<img
+					className="tarotCard"
+					src={props.card.imageUrl}
+					alt={props.card.name}
+				/>
 			</Button>
 		)
 	} else {

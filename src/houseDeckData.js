@@ -1,4 +1,4 @@
-const tarotData = [
+const houseDeckData = [
 	{
 		name: `the-fool`,
 		summary: `A new phase in life and an urge to explore new aspects of yourself. Decisions have to be thought through carefully; don't lead yourself into unsuitable or difficult situations.`,
@@ -702,3 +702,5 @@ const tarotData = [
 		card_index: 77
 	}
 ]
+
+export default houseDeckData

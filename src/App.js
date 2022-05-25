@@ -8,22 +8,49 @@ import readingConfigs from './readingConfigs'
 import NavBar from './Components/NavBar'
 import About from './Components/About'
 import tarotDecks from './tarotDecks'
+import houseDeckData from './houseDeckData'
 
 function App() {
-	const [allCards, setAllCards] = useState([])
-	const [deck, setDeck] = useState(tarotDecks[0])
-
+	const [currentDeck, setCurrentDeck] = useState(tarotDecks[0])
+	console.log(tarotDecks)
 	useEffect(() => {
 		fetch('https://rws-cards-api.herokuapp.com/api/v1/cards/')
 			.then((response) => response.json())
 			.then(({ cards }) => {
 				cards.forEach((card) => {
-					card.url = `https://www.sacred-texts.com/tarot/pkt/img/${card.name_short}.jpg`
-					card.reversed = false
+					card.imageUrl =
+						tarotDecks[0].imageFetchUrls.prepend +
+						card.name_short +
+						tarotDecks[0].imageFetchUrls.append
+					card.isReversed = false
 				})
-				setAllCards(cards)
+				tarotDecks[0].allCards = cards
+				setCurrentDeck(tarotDecks[0])
 			})
 			.catch(() => console.log('Problem with Tarot Cards API fetch'))
+		const houseDeckCards = houseDeckData.map((card) => {
+			const newCard = {}
+			newCard.imageUrl =
+				tarotDecks[1].imageFetchUrls.prepend +
+				card.name_short +
+				tarotDecks[1].imageFetchUrls.append
+			newCard.isReversed = false
+			newCard.name_short = card.name
+			newCard.value = card.card_index
+			newCard.meaning_up = card.upright
+			newCard.meaning_rev = card.reversed
+			newCard.desc = card.full_meaning
+			const capNameArray = card.name.split('-').map((word) => {
+				const capWord = word.charAt(0).toUpperCase() + word.slice(1)
+				return capWord
+			})
+			const capName = capNameArray.reduce(
+				(previous, current) => previous + ' ' + current
+			)
+			newCard.name = capName
+			return newCard
+		})
+		tarotDecks[1].allCards = houseDeckCards
 	}, [])
 
 	const readingList = readingConfigs().map((reading, index) => (
@@ -31,12 +58,7 @@ function App() {
 			key={reading.name}
 			path={reading.path}
 			element={
-				<Reading
-					index={index}
-					reading={reading}
-					allCards={allCards}
-					deck={deck}
-				/>
+				<Reading index={index} reading={reading} currentDeck={currentDeck} />
 			}
 		/>
 	))
@@ -45,8 +67,21 @@ function App() {
 		<div className="App">
 			<NavBar />
 			<Routes>
-				<Route path="/" element={<Home setDeck={setDeck} />} />
-				<Route path="/decks" element={<DeckList setDeck={setDeck} />} />
+				<Route
+					path="/"
+					element={
+						<Home currentDeck={currentDeck} setCurrentDeck={setCurrentDeck} />
+					}
+				/>
+				<Route
+					path="/decks"
+					element={
+						<DeckList
+							currentDeck={currentDeck}
+							setCurrentDeck={setCurrentDeck}
+						/>
+					}
+				/>
 				{readingList}
 				<Route path="/about" element={<About />} />
 			</Routes>

@@ -1,15 +1,21 @@
 import Card from '@mui/material/Card'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
+import tarotDecks from '../tarotDecks'
 
 const Deck = (props) => {
+	const handleDeckChange = () => {
+		const deckIndex = tarotDecks.findIndex((deck) => deck.name === props.name)
+		props.setCurrentDeck(tarotDecks[deckIndex])
+	}
+
 	const imgList = props.cardPreviews.map((item) => {
 		return (
 			<img
 				key={item.name_short}
 				className="tarotCard"
-				src={item.url}
-				srcSet={item.url}
+				src={item.imageUrl}
+				srcSet={item.imageUrl}
 				alt={item.name}
 				loading="lazy"
 			/>
@@ -22,7 +28,8 @@ const Deck = (props) => {
 					key={link.name}
 					size="medium"
 					variant="outlined"
-					disabled={true}
+					disabled={props.name === props.currentDeck.name ? true : false}
+					onClick={handleDeckChange}
 					sx={{
 						m: 1
 					}}
