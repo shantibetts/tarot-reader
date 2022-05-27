@@ -1,3 +1,5 @@
+import tarotHouseDeckBack from './Images/tarotHouseDeckBack'
+
 const tarotDecks = [
 	{
 		imageFetchUrls: {
@@ -47,7 +49,7 @@ const tarotDecks = [
 			{
 				name: 'Verso',
 				name_short: 'verso',
-				imageUrl: 'https://www.sacred-texts.com/tarot/pkt/img/verso.jpg'
+				imageUrl: tarotHouseDeckBack
 			},
 			{
 				name: 'The Magician',
